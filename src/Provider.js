@@ -9,12 +9,12 @@ export function MyProvider (props){
         cool:true
     });
 
-    const incAge =  ()=> {
+    const incAge =  ()=>
        setPerson({
            ...person,
            age: person.age+1
        })
-    }
+    
     return(
         <MyContext.Provider value = {{person,incAge}}>
             {props.children}
