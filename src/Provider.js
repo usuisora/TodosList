@@ -1,13 +1,8 @@
 import React,{createContext,useState} from 'react'
 
  export const MyContext =createContext();
+ export function MyProvider (props){
 
-export function MyProvider (props){
-    const [person, setPerson] = useState({
-        name: 'Kevin',
-        age: 12,
-        cool:true
-    });
     const [importance, setImportance] = useState([
         {id:'1',name:'Срочная важная'},
         {id:'2',name:'Срочная неважная'},
