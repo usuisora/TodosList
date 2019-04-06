@@ -32,7 +32,7 @@ import React,{createContext,useState} from 'react'
     // }
 
     return(
-        <MyContext.Provider value = {{todos,deleteTodo}}>
+        <MyContext.Provider value = {{todos,deleteTodo,importance}}>
             {props.children}
         </MyContext.Provider>
     )

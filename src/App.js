@@ -18,7 +18,7 @@ const theme = createMuiTheme({
 );
 
    function App(props){
-  const [isSideOpen, setIsSideOpen] = useState(false);
+  const [isSideOpen, setIsSideOpen] = useState(true);
 
 
   return (

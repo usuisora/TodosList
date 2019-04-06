@@ -10,7 +10,7 @@ const styles = theme => ({
       marginTop: theme.spacing.unit * 3,
       marginLeft: 'auto',
       marginRight: 'auto',
-      overflowX: 'auto',
+      overflowX: 'auto'
     },
     table: {
       minWidth: 700,
