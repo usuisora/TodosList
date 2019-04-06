@@ -23,7 +23,21 @@ import React,{createContext,useState} from 'react'
         var newTodos = todos.filter(todo=>(todo.id!==id))
         setTodos(newTodos)
     }
+
+
   
+    const addTodo = (arr) =>{
+        
+        const newId = todos[todos.length-1].id+1
+        var newtodo = {id:newId,isCompleted: false}
+        console.log(Object.entries(arr))
+        Object.entries(arr).forEach(row=>{
+            newtodo[row[0]] = row[1] 
+        })
+        const newTodos = [...todos,newtodo]
+        setTodos(newTodos)
+       
+    }
     // const editTodo = (id) =>{
     //     var editTodo = todos.find(todo=>(todo.id===id))
     //     var openSide = true
@@ -32,7 +46,7 @@ import React,{createContext,useState} from 'react'
     // }
 
     return(
-        <MyContext.Provider value = {{todos,deleteTodo,importance}}>
+        <MyContext.Provider value = {{todos,deleteTodo,importance,addTodo}}>
             {props.children}
         </MyContext.Provider>
     )

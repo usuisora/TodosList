@@ -12,6 +12,9 @@ const theme = createMuiTheme({
     },
     secondary: {
       main: '#b71010',
+    },
+    spacing:{
+      unit: '3px'
     }
   },
 }

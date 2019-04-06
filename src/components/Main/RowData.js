@@ -11,8 +11,8 @@ function RowData({todo,classes}) {
         {newtodo.map(column=>{
           if(column[0]==='isCompleted')
               return (
-                <Fragment>
-                   <TableCell  key = {column[0]} align="right">{column[1]===true? "Выполнено":"Не выполнено"}</TableCell> 
+                <Fragment key = {column[0]}>
+                   <TableCell   align="right">{column[1]===true? "Выполнено":"Не выполнено"}</TableCell> 
                 </Fragment>
               )
           return  <TableCell  key = {column[0]} align="right">{column[1]}</TableCell> 

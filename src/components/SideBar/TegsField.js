@@ -42,7 +42,7 @@ const styles = theme => ({
     overflow: 'hidden',
   },
   chip: {
-    margin: `${theme.spacing.unit / 2}px ${theme.spacing.unit / 4}px`,
+    margin: '4px'
   },
   chipFocused: {
     backgroundColor: emphasize(
@@ -51,7 +51,7 @@ const styles = theme => ({
     ),
   },
   noOptionsMessage: {
-    padding: `${theme.spacing.unit}px ${theme.spacing.unit * 2}px`,
+    padding: '3px'
   },
   singleValue: {
     fontSize: 16,
@@ -64,12 +64,12 @@ const styles = theme => ({
   paper: {
     position: 'absolute',
     zIndex: 1,
-    marginTop: theme.spacing.unit,
+    marginTop: '1px',
     left: 0,
     right: 0,
   },
   divider: {
-    height: theme.spacing.unit * 2,
+    height: '2px',
   },
 });
 
@@ -176,6 +176,13 @@ class IntegrationReactSelect extends React.Component {
   };
 
   handleChange = name => value => {
+    const {setTegs} = this.props;
+    const {multi} = this.state;
+    const multiInStr = (!multi) ? '': multi.reduce((sum,next)=>{
+       return [...sum,next.value.toString()]
+    },[])
+         .join(' #');
+    setTegs('#'+multiInStr+'#'+value)
     this.setState({
       [name]: value,
     });
@@ -183,7 +190,7 @@ class IntegrationReactSelect extends React.Component {
   };
 
   render() {
-    const { classes, theme } = this.props;
+    const {setTegs, classes, theme } = this.props;
 
     const selectStyles = {
       input: base => ({

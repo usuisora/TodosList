@@ -1,5 +1,5 @@
 import React from 'react'
-import {Button,Typography, Drawer, Divider} from '@material-ui/core'
+import {Typography, Drawer, Divider} from '@material-ui/core'
 import SideForm from './SideForm'
 import { withStyles } from '@material-ui/core/styles';
 import {MyContext} from '../../Provider'
@@ -23,16 +23,10 @@ function SideBar({isSideOpen,setIsSideOpen,classes}) {
             </Typography>
            <Divider/>
            <MyContext.Consumer>
-             {({importance})=>(
-              <SideForm importance={importance}/>
+             {({importance,addTodo})=>(
+              <SideForm importance={importance} addTodo ={addTodo} setIsSideOpen={setIsSideOpen} />
              )}
            </MyContext.Consumer>
-
-           <Divider/>
-
-                <Button  color="primary" >Save</Button>
-                <Button  color="secondary">Cancel</Button>
-                
     </Drawer>
   )
 }
