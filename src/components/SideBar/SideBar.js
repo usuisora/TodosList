@@ -5,7 +5,8 @@ import {Button,Typography, Drawer} from '@material-ui/core'
 function SideBar({isSideOpen,setIsSideOpen}) {
     
   return (
-    <Drawer open={isSideOpen} 
+    <Drawer anchor="right"
+            open={isSideOpen} 
             onClose={()=>setIsSideOpen(false)}>
         dsfdsfhs
     </Drawer>

@@ -1,8 +1,8 @@
 import React from 'react'
 import { withStyles } from '@material-ui/core/styles';
 import {AppBar,Toolbar ,Button,Typography, IconButton} from '@material-ui/core'
-import MenuIcon from '@material-ui/icons/Menu';
-import AddIcon from '@material-ui/icons/Add';
+// import MenuIcon from '@material-ui/icons/Menu';
+// import AddIcon from '@material-ui/icons/Add';
 
 const styles = {
     root: {
@@ -22,13 +22,13 @@ function Bar({classes,setIsSideOpen}) {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
+        {/* <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
             <MenuIcon onClick={()=>setIsSideOpen(true)}/>
-          </IconButton>
+          </IconButton> */}
           <Typography variant="h6" color="inherit" className={classes.grow}>
             Список задач
           </Typography>
-         <Button  color="inherit">
+         <Button  color="inherit" onClick={()=>setIsSideOpen(true)}>
              Добавить
          </Button>
         </Toolbar>
