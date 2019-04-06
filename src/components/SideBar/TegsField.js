@@ -135,13 +135,6 @@ function Placeholder(props) {
   );
 }
 
-function SingleValue(props) {
-  return (
-    <Typography className={props.selectProps.classes.singleValue} {...props.innerProps}>
-      {props.children}
-    </Typography>
-  );
-}
 
 function ValueContainer(props) {
   return <div className={props.selectProps.classes.valueContainer}>{props.children}</div>;
@@ -179,14 +172,14 @@ const components = {
 
 class IntegrationReactSelect extends React.Component {
   state = {
-    single: null,
-    multi: null,
+    multi: null
   };
 
   handleChange = name => value => {
     this.setState({
       [name]: value,
     });
+    console.log(this.state.multi)
   };
 
   render() {
@@ -204,7 +197,7 @@ class IntegrationReactSelect extends React.Component {
 
     return (
       <div className={classes.root}>
-        <NoSsr>
+        
           <Select
             classes={classes}
             styles={selectStyles}
@@ -218,10 +211,10 @@ class IntegrationReactSelect extends React.Component {
             components={components}
             value={this.state.multi}
             onChange={this.handleChange('multi')}
-            placeholder="Select multiple countries"
+            placeholder="Выберите теги"
             isMulti
           />
-        </NoSsr>
+      
       </div>
     );
   }

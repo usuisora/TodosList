@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import TextField from '@material-ui/core/TextField';
 import { withStyles,createStyles} from '@material-ui/core/styles';
 import { Divider , FormControl, FormLabel, RadioGroup,FormControlLabel,Radio} from '@material-ui/core';
@@ -22,9 +22,18 @@ const styles = theme =>createStyles({
     }
 })
 function SideForm({classes,importance}) {
-
-    const handleChange=()=>{
-        console.log('change')
+    const initDate = new Date().toISOString().substring(0,10)
+    const [newtodo, setNewtodo] = useState([
+      {name:''},
+      {description:''},
+      {date:initDate},
+      {importance:importance[0].name},
+      {tegs:''}
+    ]);
+    
+    const handleChange=({target:{value,id}})=>{
+       console.log(value,id)
+       setNewtodo({...newtodo,[id]:value})
     }
   return (
    <form  className = {classes.root}>
@@ -46,7 +55,7 @@ function SideForm({classes,importance}) {
         id="date"
         label="Дата выполнения"
         type="date"
-        defaultValue="2017-05-24"
+        defaultValue={initDate}
         onChange={handleChange}
         InputLabelProps={{
           shrink: true,
@@ -54,20 +63,21 @@ function SideForm({classes,importance}) {
         
         <FormControl component="fieldset" className={classes.formControl}>
           <FormLabel component="legend">Важность</FormLabel>
-          <RadioGroup
-            aria-label="importance"
-            className={classes.group}
-            value={'неважно'}
-            onChange={handleChange}
-          >
-          {
-            importance.map(el =>{
-              return (<FormControlLabel value={el.name} control={<Radio />} label={el.name}  />)       
-          })
-          }         
-          </RadioGroup>
+            <RadioGroup
+            id = "importance"
+              className={classes.group}
+              value={newtodo.importance}
+              onChange={handleChange}
+            >
+              {
+                importance.map(el =>{
+                  return (<FormControlLabel value={el.name} control={<Radio />} label={el.name}  />)       
+              })
+              }         
+            </RadioGroup>
         </FormControl>
-        <TegsField/>
+         
+         <TegsField/>
     </form>
   )
 }
