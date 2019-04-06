@@ -25,13 +25,17 @@ function SideForm({classes,importance, addTodo,setIsSideOpen}) {
     const initDate = new Date().toISOString().substring(0,10)
     
     const [tegs, setTegs] = useState('');
-    const [newtodo, setNewtodo] = useState([
-      {name:''},
-      {description:''},
-      {date:initDate},
-      {importance:importance[0].name},
-      {tegs: tegs}
-    ]);
+    const [newtodo, setNewtodo] = useState({
+        name:'',
+        description:'',
+        date:initDate,
+        importance:importance[0].name,
+        tegs: tegs
+    });
+
+
+    
+    
     const handleChange=({target:{value,id}})=>{
        console.log(value,id)
        setNewtodo({...newtodo,[id]:value})
@@ -84,7 +88,7 @@ function SideForm({classes,importance, addTodo,setIsSideOpen}) {
           <TegsField  setTegs ={setTegs}/>
       </form>
      <Divider/>
-        <Button  color="primary" onClick={()=>addTodo(newtodo)} >Save</Button>
+        <Button  color="primary" onClick={()=>{addTodo(newtodo);setIsSideOpen(false)}} >Save</Button>
         <Button  color="secondary" onClick={()=>setIsSideOpen(false)}>Cancel</Button>
 </Fragment>
   )
