@@ -16,11 +16,7 @@ const styles = theme => ({
       minWidth: 700,
     }
   });
-//   let id = 0;
-// function createData(name, calories, fat, carbs, protein) {
-//   id += 1;
-//   return { id, name, calories, fat, carbs, protein };
-// }
+
 function TodosTable({classes}) {
     return (
         <Paper className={classes.root}>

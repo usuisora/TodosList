@@ -18,11 +18,21 @@ import React,{createContext,useState} from 'react'
         {id:3,isCompleted: true, name:'Забрать справку', description:'Мед. осмотр в поликлинике. Кабинет 12',date:new Date(2019,3,25).toISOString().substring(0,10),importance:importance[0].name,tegs:'#trip'}
     ]);
     
-    
+   
+    const deleteTodo = (id) =>{
+        var newTodos = todos.filter(todo=>(todo.id!==id))
+        setTodos(newTodos)
+    }
+  
+    // const editTodo = (id) =>{
+    //     var editTodo = todos.find(todo=>(todo.id===id))
+    //     var openSide = true
 
+    //     // setTodos(newTodos)
+    // }
 
     return(
-        <MyContext.Provider value = {todos}>
+        <MyContext.Provider value = {{todos,deleteTodo}}>
             {props.children}
         </MyContext.Provider>
     )

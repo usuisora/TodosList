@@ -8,11 +8,11 @@ import TodosTable from './components/Main/TodosTable';
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#444',
+      main: '#444'
     },
     secondary: {
-      main: '#f12',
-    },
+      main: '#b71010',
+    }
   },
 }
 );
