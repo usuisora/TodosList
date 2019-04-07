@@ -16,15 +16,15 @@ function SideBar({classes}) {
     
   return (
      <MyContext.Consumer>
-     {({importance,addTodo,isSideOpen,setIsSideOpen})=>(
+     {({importance,addTodo,isSideOpen,setIsSideOpen,initTodo})=>(
           <Drawer anchor="right"
-                  open={isSideOpen} 
+                  open={isSideOpen}
                   onClose={()=>setIsSideOpen(false)}>
                   <Typography component="h2" variant="h2" className = {classes.header}>
                       Добавить задачу
                   </Typography>
                 <Divider/>
-                    <SideForm importance={importance} addTodo ={addTodo} setIsSideOpen={setIsSideOpen} />
+                    <SideForm importance={importance} addTodo ={addTodo} setIsSideOpen={setIsSideOpen}  initTodo= {initTodo} />
           </Drawer>
          
       )}

@@ -12,7 +12,7 @@ function TodosBody() {
                 {console.log(todos)}
               {todos.map(todo => (
                 <TableRow key={todo.id} >
-                      <RowData todo={todo}/>
+                      <RowData todo={todo} />
                 </TableRow>
               ))}
             </TableBody>

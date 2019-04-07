@@ -26,21 +26,12 @@ const styles = theme =>createStyles({
         
     }
 })
-function SideForm({classes,importance, addTodo,setIsSideOpen}) {
+function SideForm({classes,importance, addTodo,setIsSideOpen,initTodo}) {
     const initDate = new Date().toISOString().substring(0,10)
     
+    const [newtodo, setNewtodo] = useState(initTodo);
+    
 
-    const [newtodo, setNewtodo] = useState({
-        name:'',
-        description:'',
-        date:initDate,
-        importance:'',
-        tegs: '#'
-    });
-
-    useEffect(()=>{
-      console.log('tegs',newtodo.tegs)
-    },[newtodo])
 
     const handleChange=({target:{value,name}})=>{
      setNewtodo({...newtodo,[name]:value})
@@ -53,7 +44,7 @@ function SideForm({classes,importance, addTodo,setIsSideOpen}) {
             name="name"
             label="Заголовок задачи"
             margin="normal"
-            required
+            value={newtodo.name}
             onChange={handleChange}
             InputProps={{
                 startAdornment: (
@@ -68,6 +59,7 @@ function SideForm({classes,importance, addTodo,setIsSideOpen}) {
             multiline
             rowsMax="4"
             margin="normal"
+            value={newtodo.description}
             onChange={handleChange}
             InputProps={{
                 startAdornment: (

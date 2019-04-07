@@ -25,30 +25,65 @@ import React,{createContext,useState} from 'react'
         setTodos(newTodos)
     }
 
+    const initDate = new Date().toISOString().substring(0,10)
 
-  
+    const [initTodo, setInitTodo] = useState({});
+
+    
+    const sortTodos = () =>{
+        var sorted= todos.sort((a,b)=>{ return a.id-b.id})
+        setTodos(sorted)
+    }
     const addTodo = (arr) =>{
-        
         const newId = todos[todos.length-1].id+1
-        var newtodo = {id:newId,isCompleted: false}
+        var newtodo = {id: newId,isCompleted: false}
         console.log(Object.entries(arr))
         Object.entries(arr).forEach(row=>{
             newtodo[row[0]] = row[1] 
         })
         const newTodos = [...todos,newtodo]
+        newTodos.sort((a,b)=>(a.id-b.id))
         setTodos(newTodos)
+        // sortTodos()
+        setInitTodo({})
        
     }
-    const editTodo = (id) =>{
-        
-        var editTodo = todos.find(todo=>(todo.id===id))
-        var openSide = true
 
+    const setTodoStatus = (id,status)=>{
+        var editTodo = todos.find(todo=>(todo.id===id))
+        editTodo.isCompleted = status;
+        const newTodos = [...todos]
+        newTodos.sort((a,b)=>(a.id-b.id))
+        setTodos(newTodos)
+        
+    }
+    const editTodo = (id) =>{
+        var editTodo = todos.find(todo=>(todo.id===id))
+        console.log(editTodo)
+        setInitTodo({
+            id: id,
+            name:editTodo.name,
+            description:editTodo.description,
+            date:initDate,
+            importance:editTodo.importance,
+            tegs: '#'
+        })
+        deleteTodo(id)
+        setIsSideOpen(true)
+     
         // setTodos(newTodos)
     }
 
     return(
-        <MyContext.Provider value = {{todos,deleteTodo,importance,addTodo,isSideOpen,setIsSideOpen}}>
+        <MyContext.Provider value = {{todos,
+                                        deleteTodo,
+                                        importance,
+                                        addTodo,
+                                        isSideOpen,
+                                        setIsSideOpen,
+                                        editTodo,
+                                        initTodo,
+                                        setTodoStatus}}>
             {props.children}
         </MyContext.Provider>
     )
