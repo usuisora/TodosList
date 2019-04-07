@@ -7,7 +7,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import DoneIcon from '@material-ui/icons/Done';
 import DescIcon from '@material-ui/icons/Description';
 import TimeIcon from '@material-ui/icons/AccessTime';
-
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const styles = theme =>createStyles({
     root: {
@@ -23,27 +23,42 @@ const styles = theme =>createStyles({
     },
     group: {
         margin: 0
-        
+    },
+    progress : {
+      marginLeft: 'auto' ,
+      marginRight: 'auto' 
     }
 })
+
+
 function SideForm({classes,importance, addTodo,setIsSideOpen,initTodo}) {
     const initDate = new Date().toISOString().substring(0,10)
     
     const [newtodo, setNewtodo] = useState(initTodo);
+    const [progressStyle, setProgressStyle] = useState({
+      display: "none"
+    });
     
 
 
     const handleChange=({target:{value,name}})=>{
-     setNewtodo({...newtodo,[name]:value})
+      if(name == 'todo'){
+         setNewtodo({...newtodo,name:value})
+      }
+      else{
+        setNewtodo({...newtodo,[name]:value})
+
+      }
     }
   return (
     <Fragment>
     <form  className = {classes.root}>
 
           <TextField  
-            name="name"
+            name="todo"
+            multiline
+            rowsMax="1"
             label="Заголовок задачи"
-            margin="normal"
             value={newtodo.name}
             onChange={handleChange}
             InputProps={{
@@ -108,8 +123,28 @@ function SideForm({classes,importance, addTodo,setIsSideOpen,initTodo}) {
       </form>
      <Divider/>
         
-        <Button  color="primary" onClick={()=>{addTodo(newtodo);setIsSideOpen(false)}} >Сохранить</Button>
+        <Button  color="primary" onClick={()=>{
+          console.log('new',newtodo)
+                                                  if(newtodo.name ==null){
+                                                    alert('Введите пожалуйта задачу')
+                                                    
+                                                  }
+                                                  else{
+                                                    addTodo(newtodo);
+                                                  setTimeout(()=>{
+                                                     setIsSideOpen(false);
+                                                  },2000)
+                                                  setProgressStyle({
+                                                    marginLeft: 'auto' ,
+                                                    marginRight: 'auto' 
+                                                  })     
+                                                  }
+                                                                                     
+                                               }} 
+                                                  >Сохранить</Button>
         <Button  color="secondary" onClick={()=>setIsSideOpen(false)}>Отмена</Button>
+        <CircularProgress style= {progressStyle} />
+
 </Fragment>
   )
 }
