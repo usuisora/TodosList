@@ -3,7 +3,7 @@ import React,{createContext,useState} from 'react'
  export const MyContext =createContext();
  export function MyProvider (props){
 
-    const [isSideOpen, setIsSideOpen] = useState(true);
+    const [isSideOpen, setIsSideOpen] = useState(false);
 
    
     

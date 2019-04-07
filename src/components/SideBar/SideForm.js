@@ -107,8 +107,9 @@ function SideForm({classes,importance, addTodo,setIsSideOpen,initTodo}) {
           <TegsField newtodo = {newtodo} setNewtodo = {setNewtodo}/>
       </form>
      <Divider/>
-        <Button  color="primary" onClick={()=>{addTodo(newtodo);setIsSideOpen(false)}} >Save</Button>
-        <Button  color="secondary" onClick={()=>setIsSideOpen(false)}>Cancel</Button>
+        
+        <Button  color="primary" onClick={()=>{addTodo(newtodo);setIsSideOpen(false)}} >Сохранить</Button>
+        <Button  color="secondary" onClick={()=>setIsSideOpen(false)}>Отмена</Button>
 </Fragment>
   )
 }

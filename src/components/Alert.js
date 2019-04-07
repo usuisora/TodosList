@@ -39,9 +39,10 @@ const styles1 = theme => ({
   },
   iconVariant: {
     opacity: 0.9,
-    marginRight: theme.spacing.unit,
+    marginRight: 4,
   },
   message: {
+    // position:'absolute',
     display: 'flex',
     alignItems: 'center',
   },
@@ -89,25 +90,19 @@ const MySnackbarContentWrapper = withStyles(styles1)(MySnackbarContent);
 
 const styles2 = theme => ({
   margin: {
-    margin: theme.spacing.unit,
+    margin: 0,
   },
 });
 
 class CustomizedSnackbar extends React.Component {
-  state = {
-    open: false,
-  };
-
-  handleClick = () => {
-    this.setState({ open: true });
-  };
-
+  
   handleClose = (event, reason) => {
     if (reason === 'clickaway') {
       return;
     }
+   const  {setOpenSnack} = this.props
 
-    this.setState({ open: false });
+   setOpenSnack(false)
   };
 
   render() {
@@ -115,22 +110,20 @@ class CustomizedSnackbar extends React.Component {
 
         return (
             <div>
-        <Button className={classes.margin} onClick={this.handleClick}>
-          Open success snackbar
-        </Button>
+
         <Snackbar
           anchorOrigin={{
-            vertical: 'bottom',
+            vertical: 'top',
             horizontal: 'left',
           }}
-          open={this.state.open}
+          open={this.props.openSnack}
           autoHideDuration={6000}
           onClose={this.handleClose}
         >
           <MySnackbarContentWrapper
             onClose={this.handleClose}
             variant="warning"
-            message="This is a success message!"
+            message="Форма будет очищена! Чтобы продолжить нажмите (Отмена)."
           />
         </Snackbar>
 
