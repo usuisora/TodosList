@@ -16,11 +16,11 @@ const styles = theme => ({
 
 
 function SideBar({classes}) {
-  const [openSnack, setOpenSnack] = useState(false);
+  // const [openSnack, setOpenSnack] = useState(false);
   
   return (
      <MyContext.Consumer>
-     {({importance,addTodo,isSideOpen,setIsSideOpen,initTodo})=>(
+     {({importance,addTodo,isSideOpen,setIsSideOpen,initTodo,openSnack, setOpenSnack})=>(
           <Drawer anchor="right"
                   open={isSideOpen}
                   onClose={()=>{
@@ -33,7 +33,7 @@ function SideBar({classes}) {
                 
                   <Divider/>
                 
-                  <SideForm importance={importance} addTodo ={addTodo} setIsSideOpen={setIsSideOpen}  initTodo= {initTodo} />
+                  <SideForm openSnack = {openSnack} setOpenSnack={setOpenSnack} importance={importance} addTodo ={addTodo} setIsSideOpen={setIsSideOpen}  initTodo= {initTodo} />
                 
                   <Alert openSnack = {openSnack} setOpenSnack={setOpenSnack}/>
           </Drawer>

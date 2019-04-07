@@ -1,5 +1,5 @@
-import React,{useState} from 'react'
-import {MyProvider,MyContext} from './Provider'
+import React from 'react'
+import {MyProvider} from './Provider'
 import Bar from './components/Bar/Bar'
 import { createMuiTheme,MuiThemeProvider } from '@material-ui/core/styles';
 import SideBar from './components/SideBar/SideBar';

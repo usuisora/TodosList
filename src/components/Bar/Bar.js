@@ -1,6 +1,6 @@
 import React from 'react'
 import { withStyles } from '@material-ui/core/styles';
-import {AppBar,Toolbar ,Button,Typography, IconButton} from '@material-ui/core'
+import {AppBar,Toolbar ,Button,Typography} from '@material-ui/core'
 import {MyContext} from '../../Provider'
 
 const styles = {

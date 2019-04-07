@@ -28,14 +28,10 @@ import React,{createContext,useState} from 'react'
     const initDate = new Date().toISOString().substring(0,10)
 
     const [initTodo, setInitTodo] = useState({});
+    const [openSnack, setOpenSnack] = useState(false);
 
-    
-    const sortTodos = () =>{
-        var sorted= todos.sort((a,b)=>{ return a.id-b.id})
-        setTodos(sorted)
-    }
     const addTodo = (arr) =>{
-        const newId = todos[todos.length-1].id+1
+        const newId =  (todos.length!==0) ? todos[todos.length-1].id+1 : 1
         var newtodo = {id: newId,isCompleted: false}
         console.log(Object.entries(arr))
         Object.entries(arr).forEach(row=>{
@@ -83,7 +79,9 @@ import React,{createContext,useState} from 'react'
                                         setIsSideOpen,
                                         editTodo,
                                         initTodo,
-                                        setTodoStatus}}>
+                                        setTodoStatus,
+                                        openSnack,
+                                        setOpenSnack}}>
             {props.children}
         </MyContext.Provider>
     )

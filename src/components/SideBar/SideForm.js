@@ -1,9 +1,8 @@
-import React,{useState, useEffect,Fragment} from 'react'
+import React,{useState, Fragment} from 'react'
 import TextField from '@material-ui/core/TextField';
 import { withStyles,createStyles} from '@material-ui/core/styles';
 import { Divider , FormControl, FormLabel, RadioGroup,FormControlLabel,Radio, Button,InputAdornment} from '@material-ui/core';
 import TegsField from './TegsField'
-import AccountCircle from '@material-ui/icons/AccountCircle';
 import DoneIcon from '@material-ui/icons/Done';
 import DescIcon from '@material-ui/icons/Description';
 import TimeIcon from '@material-ui/icons/AccessTime';
@@ -31,7 +30,7 @@ const styles = theme =>createStyles({
 })
 
 
-function SideForm({classes,importance, addTodo,setIsSideOpen,initTodo}) {
+function SideForm({classes,importance, addTodo,setIsSideOpen,initTodo,setOpenSnack}) {
     const initDate = new Date().toISOString().substring(0,10)
     
     const [newtodo, setNewtodo] = useState(initTodo);
@@ -42,7 +41,7 @@ function SideForm({classes,importance, addTodo,setIsSideOpen,initTodo}) {
 
 
     const handleChange=({target:{value,name}})=>{
-      if(name == 'todo'){
+      if(name === 'todo'){
          setNewtodo({...newtodo,name:value})
       }
       else{
@@ -142,7 +141,7 @@ function SideForm({classes,importance, addTodo,setIsSideOpen,initTodo}) {
                                                                                      
                                                }} 
                                                   >Сохранить</Button>
-        <Button  color="secondary" onClick={()=>setIsSideOpen(false)}>Отмена</Button>
+        <Button  color="secondary" onClick={()=>{setIsSideOpen(false);setOpenSnack(false)}}>Отмена</Button>
         <CircularProgress style= {progressStyle} />
 
 </Fragment>
