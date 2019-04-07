@@ -3,6 +3,7 @@ import {Table,Paper} from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import TodosHeaders from './TodosHeaders';
 import TodosBody from './TodosBody'
+import Alert from '../Alert'
 
 const styles = theme => ({
     root: {
@@ -24,6 +25,8 @@ function TodosTable({classes}) {
             <TodosHeaders/>
             <TodosBody/>
           </Table>
+
+          <Alert/>
         </Paper>
       );
 }
