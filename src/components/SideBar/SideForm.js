@@ -4,6 +4,11 @@ import { withStyles,createStyles} from '@material-ui/core/styles';
 import { Divider , FormControl, FormLabel, RadioGroup,FormControlLabel,Radio, Button,InputAdornment} from '@material-ui/core';
 import TegsField from './TegsField'
 import AccountCircle from '@material-ui/icons/AccountCircle';
+import DoneIcon from '@material-ui/icons/Done';
+import DescIcon from '@material-ui/icons/Description';
+import TimeIcon from '@material-ui/icons/AccessTime';
+
+
 const styles = theme =>createStyles({
     root: {
         display: 'flex',
@@ -53,7 +58,7 @@ function SideForm({classes,importance, addTodo,setIsSideOpen}) {
             InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
-                    <AccountCircle />
+                    <DoneIcon />
                   </InputAdornment>
                 )}}
           />
@@ -67,7 +72,7 @@ function SideForm({classes,importance, addTodo,setIsSideOpen}) {
             InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
-                    <AccountCircle />
+                    <DescIcon/>
                   </InputAdornment>
                 )}}
             
@@ -82,7 +87,7 @@ function SideForm({classes,importance, addTodo,setIsSideOpen}) {
             InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
-                    <AccountCircle />
+                    <TimeIcon />
                   </InputAdornment>
                 )}}
             InputLabelProps={{

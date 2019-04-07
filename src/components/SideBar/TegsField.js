@@ -12,7 +12,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import CancelIcon from '@material-ui/icons/Cancel';
 import { emphasize } from '@material-ui/core/styles/colorManipulator';
 import {InputAdornment} from '@material-ui/core';
-import AccountCircle from '@material-ui/icons/AccountCircle';
+import MarkIcon from '@material-ui/icons/Bookmark';
 
 const suggestions = [
  
@@ -99,7 +99,7 @@ function Control(props) {
         inputComponent,
         startAdornment: (
                   <InputAdornment position="start">
-                    <AccountCircle />
+                    <MarkIcon />
                   </InputAdornment>
                 ),
         inputProps: {
