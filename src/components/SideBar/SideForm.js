@@ -1,9 +1,9 @@
 import React,{useState, useEffect,Fragment} from 'react'
 import TextField from '@material-ui/core/TextField';
 import { withStyles,createStyles} from '@material-ui/core/styles';
-import { Divider , FormControl, FormLabel, RadioGroup,FormControlLabel,Radio, Button} from '@material-ui/core';
+import { Divider , FormControl, FormLabel, RadioGroup,FormControlLabel,Radio, Button,InputAdornment} from '@material-ui/core';
 import TegsField from './TegsField'
-
+import AccountCircle from '@material-ui/icons/AccountCircle';
 const styles = theme =>createStyles({
     root: {
         display: 'flex',
@@ -43,12 +43,19 @@ function SideForm({classes,importance, addTodo,setIsSideOpen}) {
   return (
     <Fragment>
     <form  className = {classes.root}>
+
           <TextField  
             name="name"
             label="Заголовок задачи"
             margin="normal"
             required
             onChange={handleChange}
+            InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <AccountCircle />
+                  </InputAdornment>
+                )}}
           />
           <TextField 
             name='description'
@@ -57,6 +64,13 @@ function SideForm({classes,importance, addTodo,setIsSideOpen}) {
             rowsMax="4"
             margin="normal"
             onChange={handleChange}
+            InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <AccountCircle />
+                  </InputAdornment>
+                )}}
+            
           />
           <TextField
             name="date"
@@ -65,6 +79,12 @@ function SideForm({classes,importance, addTodo,setIsSideOpen}) {
             required
             defaultValue={initDate}
             onChange={handleChange}
+            InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <AccountCircle />
+                  </InputAdornment>
+                )}}
             InputLabelProps={{
               shrink: true,
           }}/>

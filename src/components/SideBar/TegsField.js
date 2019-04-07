@@ -11,6 +11,8 @@ import Chip from '@material-ui/core/Chip';
 import MenuItem from '@material-ui/core/MenuItem';
 import CancelIcon from '@material-ui/icons/Cancel';
 import { emphasize } from '@material-ui/core/styles/colorManipulator';
+import {InputAdornment} from '@material-ui/core';
+import AccountCircle from '@material-ui/icons/AccountCircle';
 
 const suggestions = [
  
@@ -95,12 +97,20 @@ function Control(props) {
       fullWidth
       InputProps={{
         inputComponent,
+        startAdornment: (
+                  <InputAdornment position="start">
+                    <AccountCircle />
+                  </InputAdornment>
+                ),
         inputProps: {
           className: props.selectProps.classes.input,
           inputRef: props.innerRef,
           children: props.children,
+         
           ...props.innerProps,
-        },
+        }
+        
+        
       }}
       {...props.selectProps.textFieldProps}
     />
@@ -189,7 +199,7 @@ class IntegrationReactSelect extends React.Component {
          .join(' #');
     setNewtodo({...newtodo,tegs:'#'+multiInStr})
   };
-  
+
   render() {
     const { classes, theme } = this.props;
     const selectStyles = {
@@ -205,7 +215,7 @@ class IntegrationReactSelect extends React.Component {
     return (
           <div className={classes.root}>
             <Select
-              classes={classes}
+              classes={classes.placeholder}
               styles={selectStyles}
               textFieldProps={{
                 label: 'Теги',
