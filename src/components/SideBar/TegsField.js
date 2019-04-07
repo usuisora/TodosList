@@ -175,23 +175,23 @@ class IntegrationReactSelect extends React.Component {
     multi: null
   };
 
+
   handleChange = name => value => {
-    const {setTegs} = this.props;
+  this.setState({
+      multi: value
+    });
+    console.log('clicked',value)
+    const {setNewtodo,newtodo} = this.props;
     const {multi} = this.state;
-    const multiInStr = (!multi) ? '': multi.reduce((sum,next)=>{
+    const multiInStr = (multi === null) ? value[0].value : value.reduce((sum,next)=>{
        return [...sum,next.value.toString()]
     },[])
          .join(' #');
-    setTegs('#'+multiInStr+'#'+value)
-    this.setState({
-      [name]: value,
-    });
-    console.log(this.state.multi)
+    setNewtodo({...newtodo,tegs:'#'+multiInStr})
   };
-
+  
   render() {
-    const {setTegs, classes, theme } = this.props;
-
+    const { classes, theme } = this.props;
     const selectStyles = {
       input: base => ({
         ...base,
@@ -203,26 +203,24 @@ class IntegrationReactSelect extends React.Component {
     };
 
     return (
-      <div className={classes.root}>
-        
-          <Select
-            classes={classes}
-            styles={selectStyles}
-            textFieldProps={{
-              label: 'Теги',
-              InputLabelProps: {
-                shrink: true,
-              },
-            }}
-            options={suggestions}
-            components={components}
-            value={this.state.multi}
-            onChange={this.handleChange('multi')}
-            placeholder="Выберите теги"
-            isMulti
-          />
-      
-      </div>
+          <div className={classes.root}>
+            <Select
+              classes={classes}
+              styles={selectStyles}
+              textFieldProps={{
+                label: 'Теги',
+                InputLabelProps: {
+                  shrink: true,
+                },
+              }}
+              options={suggestions}
+              components={components}
+              value={this.state.multi}
+              onChange={this.handleChange('multi')}
+              placeholder="Выберите теги"
+              isMulti
+            />
+         </div>
     );
   }
 }

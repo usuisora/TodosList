@@ -1,4 +1,4 @@
-import React,{useState, Fragment} from 'react'
+import React,{useState, useEffect,Fragment} from 'react'
 import TextField from '@material-ui/core/TextField';
 import { withStyles,createStyles} from '@material-ui/core/styles';
 import { Divider , FormControl, FormLabel, RadioGroup,FormControlLabel,Radio, Button} from '@material-ui/core';
@@ -24,34 +24,34 @@ const styles = theme =>createStyles({
 function SideForm({classes,importance, addTodo,setIsSideOpen}) {
     const initDate = new Date().toISOString().substring(0,10)
     
-    const [tegs, setTegs] = useState('');
+
     const [newtodo, setNewtodo] = useState({
         name:'',
         description:'',
         date:initDate,
-        importance:importance[0].name,
-        tegs: tegs
+        importance:'',
+        tegs: '#'
     });
 
+    useEffect(()=>{
+      console.log('tegs',newtodo.tegs)
+    },[newtodo])
 
-    
-    
-    const handleChange=({target:{value,id}})=>{
-       console.log(value,id)
-       setNewtodo({...newtodo,[id]:value})
+    const handleChange=({target:{value,name}})=>{
+     setNewtodo({...newtodo,[name]:value})
     }
   return (
     <Fragment>
     <form  className = {classes.root}>
           <TextField  
-            id="name"
+            name="name"
             label="Заголовок задачи"
             margin="normal"
             required
             onChange={handleChange}
           />
           <TextField 
-            id='description'
+            name='description'
             label="Описание задачи"
             multiline
             rowsMax="4"
@@ -59,33 +59,35 @@ function SideForm({classes,importance, addTodo,setIsSideOpen}) {
             onChange={handleChange}
           />
           <TextField
-          id="date"
-          label="Дата выполнения"
-          type="date"
-          required
-          defaultValue={initDate}
-          onChange={handleChange}
-          InputLabelProps={{
-            shrink: true,
+            name="date"
+            label="Дата выполнения"
+            type="date"
+            required
+            defaultValue={initDate}
+            onChange={handleChange}
+            InputLabelProps={{
+              shrink: true,
           }}/>
           
           <FormControl component="fieldset" className={classes.formControl}>
             <FormLabel component="legend">Важность</FormLabel>
               <RadioGroup
-              id = "importance"
-                className={classes.group}
                 value={newtodo.importance}
                 onChange={handleChange}
+                id = 'importance'
+                name= 'importance'
+                className={classes.group}
+                
               >
                 {
                   importance.map(el =>{
-                    return (<FormControlLabel key = {el.id} value={el.name} control={<Radio />} label={el.name}  />)       
+                    return (<FormControlLabel id = {el.id} key = {el.id} value={el.name} control={<Radio />} label={el.name}  />)       
                 })
                 }         
               </RadioGroup>
           </FormControl>
           
-          <TegsField  setTegs ={setTegs}/>
+          <TegsField newtodo = {newtodo} setNewtodo = {setNewtodo}/>
       </form>
      <Divider/>
         <Button  color="primary" onClick={()=>{addTodo(newtodo);setIsSideOpen(false)}} >Save</Button>
