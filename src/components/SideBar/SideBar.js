@@ -12,22 +12,23 @@ const styles = theme => ({
    marginRight: 'auto',
   }
 });
-function SideBar({isSideOpen,setIsSideOpen,classes}) {
+function SideBar({classes}) {
     
   return (
-    <Drawer anchor="right"
-            open={isSideOpen} 
-            onClose={()=>setIsSideOpen(false)}>
-            <Typography component="h2" variant="h2" className = {classes.header}>
-                Добавить задачу
-            </Typography>
-           <Divider/>
-           <MyContext.Consumer>
-             {({importance,addTodo})=>(
-              <SideForm importance={importance} addTodo ={addTodo} setIsSideOpen={setIsSideOpen} />
-             )}
-           </MyContext.Consumer>
-    </Drawer>
+     <MyContext.Consumer>
+     {({importance,addTodo,isSideOpen,setIsSideOpen})=>(
+          <Drawer anchor="right"
+                  open={isSideOpen} 
+                  onClose={()=>setIsSideOpen(false)}>
+                  <Typography component="h2" variant="h2" className = {classes.header}>
+                      Добавить задачу
+                  </Typography>
+                <Divider/>
+                    <SideForm importance={importance} addTodo ={addTodo} setIsSideOpen={setIsSideOpen} />
+          </Drawer>
+         
+      )}
+    </MyContext.Consumer>
   )
 }
 

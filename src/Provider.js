@@ -3,6 +3,7 @@ import React,{createContext,useState} from 'react'
  export const MyContext =createContext();
  export function MyProvider (props){
 
+    const [isSideOpen, setIsSideOpen] = useState(true);
 
    
     
@@ -38,15 +39,16 @@ import React,{createContext,useState} from 'react'
         setTodos(newTodos)
        
     }
-    // const editTodo = (id) =>{
-    //     var editTodo = todos.find(todo=>(todo.id===id))
-    //     var openSide = true
+    const editTodo = (id) =>{
+        
+        var editTodo = todos.find(todo=>(todo.id===id))
+        var openSide = true
 
-    //     // setTodos(newTodos)
-    // }
+        // setTodos(newTodos)
+    }
 
     return(
-        <MyContext.Provider value = {{todos,deleteTodo,importance,addTodo}}>
+        <MyContext.Provider value = {{todos,deleteTodo,importance,addTodo,isSideOpen,setIsSideOpen}}>
             {props.children}
         </MyContext.Provider>
     )

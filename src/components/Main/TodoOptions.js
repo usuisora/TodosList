@@ -21,10 +21,10 @@ const styles = createStyles({
 function TodoOptions({todosId,classes,style}) {
   return (
     <MyContext.Consumer >
-        {({deleteTodo})=>(
+        {({deleteTodo,editTodo})=>(
             <React.Fragment >
-              <TableCell id='editCell'  align="right"  style = {{minWidth: 15}}>
-                <Fab variant="extended" size="small" aria-label="Edit" >
+              <TableCell id='editCell'  align="right"  style = {{minWidth: 15}} >
+                <Fab variant="extended" size="small" aria-label="Edit" onClick={()=>editTodo(todosId)} >
                   <EditIcon/>
                 </Fab>
               </TableCell>

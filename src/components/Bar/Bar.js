@@ -1,8 +1,7 @@
 import React from 'react'
 import { withStyles } from '@material-ui/core/styles';
 import {AppBar,Toolbar ,Button,Typography, IconButton} from '@material-ui/core'
-// import MenuIcon from '@material-ui/icons/Menu';
-// import AddIcon from '@material-ui/icons/Add';
+import {MyContext} from '../../Provider'
 
 const styles = {
     root: {
@@ -16,24 +15,25 @@ const styles = {
       marginRight: 20,
     },
   };
-function Bar({classes,setIsSideOpen}) {
+function Bar({classes}) {
     // const { classes } = props;
   return (
-    <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar>
-        {/* <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
-            <MenuIcon onClick={()=>setIsSideOpen(true)}/>
-          </IconButton> */}
-          <Typography variant="h6" color="inherit" className={classes.grow}>
-            Список задач
-          </Typography>
-         <Button  color="inherit" onClick={()=>setIsSideOpen(true)}>
-             Добавить
-         </Button>
-        </Toolbar>
-      </AppBar>
-    </div>
+<MyContext.Consumer>{
+  ({setIsSideOpen})=> 
+      <div className={classes.root}>
+          <AppBar position="static">
+            <Toolbar>
+              <Typography variant="h6" color="inherit" className={classes.grow}>
+                Список задач
+              </Typography>
+            <Button  color="inherit" onClick={()=>setIsSideOpen(true)}>
+                Добавить
+            </Button>
+            </Toolbar>
+          </AppBar>
+        </div>}
+</MyContext.Consumer>
+   
   )
 }
 

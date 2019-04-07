@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import {MyProvider} from './Provider'
+import {MyProvider,MyContext} from './Provider'
 import Bar from './components/Bar/Bar'
 import { createMuiTheme,MuiThemeProvider } from '@material-ui/core/styles';
 import SideBar from './components/SideBar/SideBar';
@@ -21,16 +21,16 @@ const theme = createMuiTheme({
 );
 
    function App(props){
-  const [isSideOpen, setIsSideOpen] = useState(true);
+  // const [isSideOpen, setIsSideOpen] = useState(true);
 
 
   return (
     <MyProvider>
       <MuiThemeProvider theme={theme}>
         <div className="App">
-          <Bar  setIsSideOpen = {setIsSideOpen}/>
-          <SideBar isSideOpen= {isSideOpen} setIsSideOpen = {setIsSideOpen}/>
-          <TodosTable/>
+           <Bar />
+           <SideBar/>
+           <TodosTable/>
         </div>
       </MuiThemeProvider>
     </MyProvider>
