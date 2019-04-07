@@ -18,19 +18,19 @@ const styles = createStyles({
     display:'inherit'
   }
 });
-function TodoOptions({todosId,classes,style}) {
+function TodoOptions({todosId,classes,style,rowStyle}) {
   return (
     <MyContext.Consumer >
         {({deleteTodo,editTodo})=>(
             <React.Fragment >
-              <TableCell id='editCell'  align="right"  style = {{minWidth: 15}} >
-                <Fab variant="extended" size="small" aria-label="Edit" onClick={()=>editTodo(todosId)} >
+              <TableCell id='editCell'  align="center" style = {{minWidth:40}} >
+                <Fab variant="extended" size="small" style = {rowStyle} aria-label="Edit" onClick={()=>editTodo(todosId)} >
                   <EditIcon/>
                 </Fab>
               </TableCell>
 
-              <TableCell id='delCell'  align="left" style = {{minWidth: 15}}>
-                <Fab variant="extended" size="small" color = 'secondary' aria-label="Del" onClick={()=>deleteTodo(todosId)}>
+              <TableCell id='delCell'  align="center" style = {{minWidth: 40}}>
+                <Fab variant="extended" size="small" style = {rowStyle} color = 'secondary' aria-label="Del" onClick={()=>deleteTodo(todosId)}>
                   <DelIcon/>
                 </Fab>
               </TableCell> 

@@ -7,14 +7,14 @@ import Alert from '../Alert'
 
 const styles = theme => ({
     root: {
-      width: '85%',
+      width: '95%',
       // marginTop: theme.spacing.unit * 3,
       marginLeft: 'auto',
       marginRight: 'auto',
       overflowX: 'auto'
     },
     table: {
-      minWidth: 700,
+      minWidth: '100%',
     }
   });
 

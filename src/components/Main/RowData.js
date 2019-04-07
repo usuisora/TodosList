@@ -1,4 +1,4 @@
-import React ,{Fragment}from 'react'
+import React ,{Fragment,useState}from 'react'
 import TableCell from '@material-ui/core/TableCell';
 import TodoOptions from './TodoOptions'
 import LongMenu from './LongMenu'
@@ -20,11 +20,11 @@ export function Drop(props) {
 }
 
 
-function RowData({todo,classes}) {
+function RowData({todo,classes,rowStyle}) {
    const newtodo = Object.entries(todo)
-   
+
   return (
-    <Fragment >
+    <Fragment  >
         {newtodo.map(column=>{
           if(column[0]==='isCompleted')
               return (
@@ -35,7 +35,7 @@ function RowData({todo,classes}) {
               )
           return  <TableCell  key = {column[0]} align="right">{column[1]}</TableCell> 
         })}     
-        <TodoOptions todosId = {todo.id} />
+        <TodoOptions todosId = {todo.id} rowStyle ={rowStyle} />
     </Fragment>
   )
 }
