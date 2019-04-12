@@ -90,6 +90,7 @@ const MySnackbarContentWrapper = withStyles(styles1)(MySnackbarContent);
 const styles2 = theme => ({
   margin: {
     margin: 0,
+    
   },
 });
 
@@ -105,7 +106,6 @@ class CustomizedSnackbar extends React.Component {
   };
 
   render() {
-    const { classes } = this.props;
 
         return (
             <div>
@@ -116,7 +116,7 @@ class CustomizedSnackbar extends React.Component {
             horizontal: 'left',
           }}
           open={this.props.openSnack}
-          autoHideDuration={6000}
+          autoHideDuration={3000}
           onClose={this.handleClose}
         >
           <MySnackbarContentWrapper

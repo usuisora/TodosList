@@ -43,8 +43,7 @@ function SideBar({classes}) {
                 
                   <SideForm openSnack = {openSnack} setOpenSnack={setOpenSnack} importance={importance} addTodo ={addTodo} setIsSideOpen={setIsSideOpen}  initTodo= {initTodo} />
                 
-                  <Alert openSnack = {openSnack} setOpenSnack={setOpenSnack}/>
-          </Drawer>
+                  </Drawer>
          
       )}
     </MyContext.Consumer>

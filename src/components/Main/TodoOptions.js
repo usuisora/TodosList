@@ -11,7 +11,6 @@ const styles = createStyles({
     display: 'none'
   },
   'hidden:hover':{
-
     display: 'none'
   },
   notHidden:{
@@ -24,13 +23,13 @@ function TodoOptions({todosId,classes,style,rowStyle}) {
         {({deleteTodo,editTodo})=>(
             <React.Fragment >
               <TableCell id='editCell'   style = {{minWidth:40}} >
-                <Fab variant="extended" size="small" style = {rowStyle} aria-label="Edit" onClick={()=>editTodo(todosId)} >
+                <Fab  size="small" style = {rowStyle} aria-label="Edit" onClick={()=>editTodo(todosId)} >
                   <EditIcon/>
                 </Fab>
               </TableCell>
 
               <TableCell id='delCell'  align="center" style = {{minWidth: 40}}>
-                <Fab variant="extended" size="small" style = {rowStyle} color = 'secondary' aria-label="Del" onClick={()=>deleteTodo(todosId)}>
+                <Fab  size="small" style = {rowStyle} color = 'secondary' aria-label="Del" onClick={()=>deleteTodo(todosId)}>
                   <DelIcon/>
                 </Fab>
               </TableCell> 
