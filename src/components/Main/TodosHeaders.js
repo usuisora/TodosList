@@ -9,7 +9,7 @@ function TodosHeaders() {
     <TableHead >
               <TableRow>
                {headers.map((header,index)=>(
-                <TableCell key = {index} >{header}</TableCell>   
+                <TableCell align="left" key = {index}  >{header}</TableCell>   
                ))}
               </TableRow>
             </TableHead>

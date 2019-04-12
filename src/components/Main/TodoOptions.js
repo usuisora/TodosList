@@ -23,7 +23,7 @@ function TodoOptions({todosId,classes,style,rowStyle}) {
     <MyContext.Consumer >
         {({deleteTodo,editTodo})=>(
             <React.Fragment >
-              <TableCell id='editCell'  align="center" style = {{minWidth:40}} >
+              <TableCell id='editCell'   style = {{minWidth:40}} >
                 <Fab variant="extended" size="small" style = {rowStyle} aria-label="Edit" onClick={()=>editTodo(todosId)} >
                   <EditIcon/>
                 </Fab>

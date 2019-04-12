@@ -122,7 +122,7 @@ class CustomizedSnackbar extends React.Component {
           <MySnackbarContentWrapper
             onClose={this.handleClose}
             variant="warning"
-            message="Форма будет очищена! Чтобы продолжить нажмите (Отмена)."
+            message={this.props.children}
           />
         </Snackbar>
 

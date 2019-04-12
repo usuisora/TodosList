@@ -14,10 +14,10 @@ import MarkIcon from '@material-ui/icons/Bookmark';
 
 const suggestions = [
  
-  { label: 'family' },
-  { label: 'meeting' },
-  { label: 'casual' },
-  { label: 'business' }
+  { label: 'тег1' },
+  { label: 'тег2' },
+  { label: 'тег3' },
+  { label: 'тег4' }
 
 ].map(suggestion => ({
   value: suggestion.label,

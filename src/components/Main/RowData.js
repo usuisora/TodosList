@@ -29,11 +29,11 @@ function RowData({todo,classes,rowStyle}) {
           if(column[0]==='isCompleted')
               return (
                 <Fragment key = {column[0]}>
-                   <TableCell   align="right">{column[1]===true? "Выполнено":"Не выполнено"}  </TableCell> 
+                   <TableCell align="left" >{column[1]===true? "Выполнено":"Не выполнено"}  </TableCell> 
                   <Drop todo = {todo}/>
                 </Fragment>
               )
-          return  <TableCell  key = {column[0]} align="right">{column[1]}</TableCell> 
+          return  <TableCell  align="left" key = {column[0]}>{column[1]}</TableCell> 
         })}     
         <TodoOptions todosId = {todo.id} rowStyle ={rowStyle} />
     </Fragment>

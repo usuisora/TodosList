@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import {Typography, Drawer, Divider} from '@material-ui/core'
+import {Typography, Drawer,AppBar,Toolbar, Divider} from '@material-ui/core'
 import SideForm from './SideForm'
 import { withStyles } from '@material-ui/core/styles';
 import {MyContext} from '../../Provider'
@@ -27,10 +27,18 @@ function SideBar({classes}) {
                      setOpenSnack(true)
                   }}>
 
-                  <Typography component="h2" variant="h2" className = {classes.header}>
-                      Добавить задачу
-                  </Typography>
-                
+                  {/* <Typography align = 'center' variant="h6" color="" className={classes.grow}>
+                     Добавить задачу
+                   </Typography> */}
+
+                   <AppBar position="static">
+                    <Toolbar>
+                      <Typography variant="h6" color="inherit" className={classes.grow}>
+                        Добавить
+                      </Typography>
+                    </Toolbar>
+                 </AppBar>
+
                   <Divider/>
                 
                   <SideForm openSnack = {openSnack} setOpenSnack={setOpenSnack} importance={importance} addTodo ={addTodo} setIsSideOpen={setIsSideOpen}  initTodo= {initTodo} />

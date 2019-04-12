@@ -7,7 +7,7 @@ import Alert from '../Alert'
 
 const styles = theme => ({
     root: {
-      width: '95%',
+      // width: '95%',
       // marginTop: theme.spacing.unit * 3,
       marginLeft: 'auto',
       marginRight: 'auto',

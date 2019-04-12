@@ -1,7 +1,8 @@
 import React from 'react'
 import { withStyles } from '@material-ui/core/styles';
-import {AppBar,Toolbar ,Button,Typography} from '@material-ui/core'
+import {AppBar,Toolbar ,Fab,Typography} from '@material-ui/core'
 import {MyContext} from '../../Provider'
+import AddIcon from '@material-ui/icons/Add';
 
 const styles = {
     root: {
@@ -26,9 +27,9 @@ function Bar({classes}) {
               <Typography variant="h6" color="inherit" className={classes.grow}>
                 Список задач
               </Typography>
-            <Button  color="inherit" onClick={()=>setIsSideOpen(true)}>
-                Добавить
-            </Button>
+            <Fab color="inherit" onClick={()=>setIsSideOpen(true)}>
+                <AddIcon/>
+            </Fab>
             </Toolbar>
           </AppBar>
         </div>}
