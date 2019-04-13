@@ -43,7 +43,6 @@ import React,{createContext,useState} from 'react'
         newTodos.sort((a,b)=>(a.id-b.id))
         setTodos(newTodos)
         setInitTodo({date: new Date().toISOString().substring(0,10)})
-
        
     }
 
@@ -64,7 +63,7 @@ import React,{createContext,useState} from 'react'
             description:editTodo.description,
             date:initDate,
             importance:editTodo.importance,
-            tegs: '#'
+            tegs: editTodo.tegs
         })
         deleteTodo(id)
         setIsSideOpen(true)

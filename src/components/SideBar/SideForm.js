@@ -133,7 +133,12 @@ function SideForm({classes,importance, addTodo,setIsSideOpen,initTodo,setMsg,set
                                                   }
                                                   else{
                                                   setTimeout(()=>{
+                                                    if(initTodo.id !== undefined){
+                                                        console.log(initTodo.id)
+                                                        deleteTodo(initTodo.id)
+                                                      }
                                                      addTodo()
+
                                                      setIsSideOpen(false);
                                                   },2000)
                                                   setProgressStyle({
@@ -144,11 +149,16 @@ function SideForm({classes,importance, addTodo,setIsSideOpen,initTodo,setMsg,set
                                                                                      
                                                }} 
                                                   >Сохранить</Button>
-        <Button  color="secondary" onClick={()=>{setIsSideOpen(false) 
-                                                if(initTodo.id !== null){
-                                                  addTodo()
-                                                }}
-                                                    }>Отмена</Button>
+        <Button  color="secondary" onClick={()=>{
+         
+                     setIsSideOpen(false) 
+                     if(initTodo.id !== undefined){
+                       addTodo()
+                     }
+                      setInitTodo({})
+                             
+                
+                                                    }}>Отмена</Button>
         <CircularProgress style= {progressStyle} />
 
 </Fragment>
