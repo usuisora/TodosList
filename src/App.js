@@ -24,7 +24,7 @@ const theme = createMuiTheme({
    function App(props){
   // const [isSideOpen, setIsSideOpen] = useState(true);
   const table = (arr) => {
-    return (arr.length === 0 ) ? (<Typography  variant="h5" align = 'center' style = {{padding: 50, color: '#666'}}>
+    return (arr.length === 0 ) ? (<Typography  variant="h5" align = 'center' style = {{padding: 50, color: '#666  '}}>
               Нет задач
             </Typography>) : <TodosTable/> 
   }
@@ -34,10 +34,10 @@ const theme = createMuiTheme({
       <MuiThemeProvider theme={theme}>
         <MyContext.Consumer>
           {
-            ({openSnack , setOpenSnack, todos})=>(
+            ({openSnack , setOpenSnack, todos, msg})=>(
               <div className="App">    
-              <Alert openSnack = {openSnack} setOpenSnack={setOpenSnack}>
-                    <div>Нажмите отмена</div>
+              <Alert openSnack = {openSnack} setOpenSnack={setOpenSnack} >
+                    <div>{msg}</div>
                   </Alert>
            
     

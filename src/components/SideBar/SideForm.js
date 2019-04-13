@@ -30,7 +30,7 @@ const styles = theme =>createStyles({
 })
 
 
-function SideForm({classes,importance, addTodo,setIsSideOpen,initTodo,setOpenSnack,setInitTodo,deleteTodo}) {
+function SideForm({classes,importance, addTodo,setIsSideOpen,initTodo,setMsg,setOpenSnack,setInitTodo,deleteTodo}) {
     const initDate = new Date().toISOString().substring(0,10)
     
     // const [newtodo, setNewtodo] = useState(initTodo);
@@ -56,7 +56,7 @@ function SideForm({classes,importance, addTodo,setIsSideOpen,initTodo,setOpenSna
   
   return (
     <Fragment>
-    <form  className = {classes.root} id = 'rootform'>
+    <form  className = {classes.root} id = 'rootform' onSubmit ={e=>{ e.preventDefault()}}>
 
           <TextField  
             name="todo"
@@ -128,7 +128,9 @@ function SideForm({classes,importance, addTodo,setIsSideOpen,initTodo,setOpenSna
         <Button  color="primary" onClick={()=>{
 
                                                   if(initTodo.name ==null){
-                                                    alert('Введите пожалуйта задачу')
+                                                    {/* alert('Введите пожалуйта задачу') */}
+                                                    setMsg('Введите пожалуйта задачу')
+                                                    setOpenSnack(true);
                                                     
                                                   }
                                                   else{

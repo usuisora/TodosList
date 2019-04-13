@@ -17,13 +17,15 @@ function SideBar() {
   
   return (
      <MyContext.Consumer>
-     {({importance,addTodo,isSideOpen,setIsSideOpen,initTodo,setInitTodo, setOpenSnack, deleteTodo})=>(
+     {({importance,addTodo,isSideOpen,setIsSideOpen,initTodo,setInitTodo, setOpenSnack, deleteTodo, setMsg})=>(
           <Drawer anchor="right" style = {{minWidth : '50%'}}
                   open={isSideOpen}
                   onClose={()=>{
-                  if(initTodo.name == null)                  
+                  if(initTodo.name == null)  
+
                       setIsSideOpen(false)
                       else
+                        setMsg('Нажмите ОТМЕНА, чтобы выйти  без сохранения')
                          setOpenSnack(true)
                     
                     setInitTodo({date: new Date().toISOString().substring(0,10)})
@@ -38,8 +40,8 @@ function SideBar() {
 
                   <Divider/>
       
-                  <SideForm  setInitTodo ={setInitTodo}  importance={importance} addTodo ={addTodo}  deleteTodo = {deleteTodo}
-                  setIsSideOpen={setIsSideOpen}  initTodo= {initTodo} />
+                  <SideForm  setInitTodo ={setInitTodo}  importance={importance} addTodo ={addTodo} setMsg={setMsg} deleteTodo = {deleteTodo}
+                  setIsSideOpen={setIsSideOpen}  initTodo= {initTodo} setOpenSnack={setOpenSnack}/>
                 
                   </Drawer>
          

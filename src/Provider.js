@@ -6,6 +6,7 @@ import React,{createContext,useState} from 'react'
     const [isSideOpen, setIsSideOpen] = useState(false);
 
    
+    const [msg, setMsg] = useState('Нажмите ОТМЕНА, чтобы выйти  без сохранения');
     
     const [importance] = useState([
         {id:'1',name:'Срочная важная'},
@@ -83,6 +84,8 @@ import React,{createContext,useState} from 'react'
                                         setInitTodo,
                                         setTodoStatus,
                                         openSnack,
+                                        msg,
+                                        setMsg,
                                         setOpenSnack}}>
             {props.children}
         </MyContext.Provider>
