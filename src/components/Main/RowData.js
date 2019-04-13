@@ -8,11 +8,13 @@ import {MyContext} from '../../Provider'
 
 
 export function Drop(props) {
-  const {todo} = props 
+  const {todo,status} = props 
   return (
     <MyContext.Consumer>
       {({setTodoStatus})=>
-        <TableCell   align="left">  <LongMenu   setTodoStatus ={setTodoStatus} todoid = {todo.id}/> </TableCell>        
+        <TableCell align = 'center'>
+            <LongMenu  status = {status} setTodoStatus = {setTodoStatus} todoid = {todo.id}/>
+        </TableCell>        
       }
     </MyContext.Consumer>
 
@@ -29,11 +31,10 @@ function RowData({todo,classes,rowStyle}) {
           if(column[0]==='isCompleted')
               return (
                 <Fragment key = {column[0]}>
-                   <TableCell align="left" >{column[1]===true? "Выполнено":"Не выполнено"}  </TableCell> 
-                  <Drop todo = {todo}/>
-                </Fragment>
+                  <Drop todo = {todo}  status = {column[1]===true? "Выполнено":"Не выполнено"} />
+                </Fragment>     
               )
-          return  <TableCell  align="left" key = {column[0]}>{column[1]}</TableCell> 
+          return  <TableCell  align='center' key = {column[0]}>{column[1]}</TableCell> 
         })}     
         <TodoOptions todosId = {todo.id} rowStyle ={rowStyle} />
     </Fragment>
