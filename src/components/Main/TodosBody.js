@@ -16,13 +16,13 @@ function Row({todo}) {
 }
 function TodosBody() {
  
-
+ 
 
   return (
    <MyContext.Consumer>
         {({todos})=>(        
             <TableBody>
-                {/* {console.log(todos)} */}
+
               {todos.map(todo => (
                 <Fragment key={todo.id}>
                    <Row todo={todo}/>

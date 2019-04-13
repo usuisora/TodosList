@@ -5,6 +5,7 @@ import { createMuiTheme,MuiThemeProvider } from '@material-ui/core/styles';
 import SideBar from './components/SideBar/SideBar';
 import TodosTable from './components/Main/TodosTable';
 import Alert from './components/Alert'
+import Typography from '@material-ui/core/Typography';
 const theme = createMuiTheme({
   palette: {
     primary: {
@@ -22,27 +23,32 @@ const theme = createMuiTheme({
 
    function App(props){
   // const [isSideOpen, setIsSideOpen] = useState(true);
-
+  const table = (arr) => {
+    return (arr.length === 0 ) ? (<Typography  variant="h5" align = 'center' style = {{padding: 40, color: '#444'}}>
+              Нет задач
+            </Typography>) : <TodosTable/> 
+  }
 
   return (
     <MyProvider>
       <MuiThemeProvider theme={theme}>
         <MyContext.Consumer>
           {
-            ({openSnack , setOpenSnack})=>(
-               
+            ({openSnack , setOpenSnack, todos})=>(
+              <div className="App">    
               <Alert openSnack = {openSnack} setOpenSnack={setOpenSnack}>
                     <div>Нажмите отмена</div>
                   </Alert>
-            )
-          }
+           
+    
+                <Bar />
+                <SideBar/>
+                {table(todos)}
+              </div>
+          )
+      }
+      
         </MyContext.Consumer>
-      <div className="App">
-           <Bar />
-           <SideBar/>
-           <TodosTable/>
-           <Alert>Нажмите отмена</Alert>
-        </div>
       </MuiThemeProvider>
     </MyProvider>
   )
