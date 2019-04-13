@@ -5,8 +5,10 @@ import MenuItem from '@material-ui/core/MenuItem';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 const options = [
-  'Выполнено',
-  'Не выполнено'
+  'Ничего',
+  'Потом',
+  'Выполняется',
+  'Выполнено'
 ];
 
 const ITEM_HEIGHT = 48;
@@ -22,9 +24,9 @@ class LongMenu extends React.Component {
 
   handleClose = ({target:{id}}) => {
   const {setTodoStatus,todoid} = this.props
-   var status = (id === options[0]) ? true : false;
+  //  var status = id
     this.setState({ anchorEl: null });
-    setTodoStatus(todoid, status)
+    setTodoStatus(todoid, id)
   };
 
   render() {
@@ -33,7 +35,7 @@ class LongMenu extends React.Component {
     const {status} = this.props;
     return (
       <span>
-        <Button onClick={this.handleClick}>{status}</Button>
+        <Button style = {{minWidth:150}}onClick={this.handleClick}>{status}</Button>
         <Menu
           id="long-menu"
           anchorEl={anchorEl}

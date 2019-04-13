@@ -23,20 +23,20 @@ export function Drop(props) {
 
 
 function RowData({todo,classes,rowStyle}) {
-   const newtodo = Object.entries(todo)
-
+  //  const newtodo = Object.entries(todo)
+  //  console.log('mylog',todo)
   return (
     <Fragment  >
-        {newtodo.map(column=>{
-          if(column[0]==='isCompleted')
-              return (
-                <Fragment key = {column[0]}>
-                  <Drop todo = {todo}  status = {column[1]===true? "Выполнено":"Не выполнено"} />
-                </Fragment>     
-              )
-          return  <TableCell  align='center' key = {column[0]}>{column[1]}</TableCell> 
-        })}     
-        <TodoOptions todosId = {todo.id} rowStyle ={rowStyle} />
+      <TableCell  align='center'>{todo.id}</TableCell> 
+      <Fragment>
+                  <Drop todo = {todo}  status = {todo.isCompleted} />
+      </Fragment>   
+      <TableCell  align='center'>{todo.name}</TableCell> 
+      <TableCell  align='center'>{todo.description}</TableCell> 
+      <TableCell  align='center'>{todo.date}</TableCell> 
+      <TableCell  align='center'>{todo.importance}</TableCell> 
+      <TableCell  align='center'>{todo.tegs}</TableCell> 
+      <TodoOptions todosId = {todo.id} rowStyle ={rowStyle} />
     </Fragment>
   )
 }

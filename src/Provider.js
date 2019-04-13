@@ -14,15 +14,16 @@ import React,{createContext,useState} from 'react'
         {id:'4',name:'Не срочная неважная'}]);
     
     const [todos, setTodos] = useState([
-        {id:1,isCompleted: true, name:'Встретится с Другом', description:'В 2 часа на проспекте.',date:new Date(2019,3,23).toISOString().substring(0,10),importance:importance[0].name,tegs:'#meeting'},
-        {id:2,isCompleted: true, name:'Почитать книгу', description:'Алхимик Пауло Коэльо',date:new Date(2019,3,24).toISOString().substring(0,10),importance:importance[3].name,tegs:'#reading'},
-        {id:3,isCompleted: true, name:'Забрать справку', description:'Мед. осмотр в поликлинике. Кабинет 12',date:new Date(2019,3,25).toISOString().substring(0,10),importance:importance[0].name,tegs:'#trip'}
+        {id:1,isCompleted: 'Потом', name:'Встретится с Другом', description:'В 2 часа на проспекте.',date:new Date(2019,3,23).toISOString().substring(0,10),importance:importance[0].name,tegs:'#meeting'},
+        {id:2,isCompleted: 'Потом', name:'Почитать книгу', description:'Алхимик Пауло Коэльо',date:new Date(2019,3,24).toISOString().substring(0,10),importance:importance[3].name,tegs:'#reading'},
+        {id:3,isCompleted: 'Потом', name:'Забрать справку', description:'Мед. осмотр в поликлинике. Кабинет 12',date:new Date(2019,3,25).toISOString().substring(0,10),importance:importance[0].name,tegs:'#trip'}
     ]);
     
    
     const deleteTodo = (id) =>{
         var newTodos = todos.filter(todo=>(todo.id!==id))
         setTodos(newTodos)
+        return 'deleted'
     }
 
     const initDate = new Date().toISOString().substring(0,10)
@@ -30,18 +31,18 @@ import React,{createContext,useState} from 'react'
     const [initTodo, setInitTodo] = useState({});
     const [openSnack, setOpenSnack] = useState(false);
 
-    const addTodo = (arr) =>{
-        const newId =  (todos.length!==0) ? todos[todos.length-1].id+1 : 1
-        var newtodo = {id: newId,isCompleted: false}
-        // console.log(Object.entries(arr))
-        Object.entries(arr).forEach(row=>{
+    const addTodo = () =>{
+        var newtodo = {isCompleted:'Потом'}
+        Object.entries(initTodo).forEach(row=>{
             newtodo[row[0]] = row[1] 
         })
+        newtodo.id =  (todos.length!==0) ? todos[todos.length-1].id+1 : 1
+
         const newTodos = [...todos,newtodo]
         newTodos.sort((a,b)=>(a.id-b.id))
         setTodos(newTodos)
-        // sortTodos()
-        setInitTodo({})
+        setInitTodo({date: new Date().toISOString().substring(0,10)})
+
        
     }
 

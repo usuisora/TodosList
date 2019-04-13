@@ -30,10 +30,10 @@ const styles = theme =>createStyles({
 })
 
 
-function SideForm({classes,importance, addTodo,setIsSideOpen,initTodo,setOpenSnack,setInitTodo}) {
+function SideForm({classes,importance, addTodo,setIsSideOpen,initTodo,setOpenSnack,setInitTodo,deleteTodo}) {
     const initDate = new Date().toISOString().substring(0,10)
     
-    const [newtodo, setNewtodo] = useState(initTodo);
+    // const [newtodo, setNewtodo] = useState(initTodo);
     const [progressStyle, setProgressStyle] = useState({
       display: "none"
     });
@@ -45,13 +45,10 @@ function SideForm({classes,importance, addTodo,setIsSideOpen,initTodo,setOpenSna
 
     const handleChange=({target:{value,name}})=>{
       if(name === 'todo'){
-        //  setNewtodo({...newtodo,name:value})
-         setInitTodo({...newtodo,name:value})
-        //  setInitTodo({name:value})
+         setInitTodo({...initTodo,name:value})
 
       }
       else{
-        // setNewtodo({...newtodo,[name]:value});
         setInitTodo({...initTodo,[name]:value})
 
       }
@@ -65,7 +62,7 @@ function SideForm({classes,importance, addTodo,setIsSideOpen,initTodo,setOpenSna
             name="todo"
             multiline
             rowsMax="1"
-            label="Заголовок задачи"
+            placeholder = 'Задача...'
             value={initTodo.name}
             onChange={handleChange}
             InputProps={{
@@ -77,11 +74,11 @@ function SideForm({classes,importance, addTodo,setIsSideOpen,initTodo,setOpenSna
           />
           <TextField 
             name='description'
-            label="Описание задачи"
+            placeholder = 'Описание...'
             multiline
             rowsMax="4"
             margin="normal"
-            value={newtodo.description}
+            value={initTodo.description}
             onChange={handleChange}
             InputProps={{
                 startAdornment: (
@@ -93,10 +90,9 @@ function SideForm({classes,importance, addTodo,setIsSideOpen,initTodo,setOpenSna
           />
           <TextField
             name="date"
-            label="Дата выполнения"
+            label="Дата"
             type="date"
-            required
-            defaultValue={initDate}
+            placeholder = 'Дата...'
             onChange={handleChange}
             InputProps={{
                 startAdornment: (
@@ -109,9 +105,8 @@ function SideForm({classes,importance, addTodo,setIsSideOpen,initTodo,setOpenSna
           }}/>
           
           <FormControl component="fieldset" className={classes.formControl}>
-            <FormLabel component="legend">Важность</FormLabel>
               <RadioGroup
-                value={newtodo.importance}
+                value={initTodo.importance}
                 onChange={handleChange}
                 id = 'importance'
                 name= 'importance'
@@ -126,19 +121,19 @@ function SideForm({classes,importance, addTodo,setIsSideOpen,initTodo,setOpenSna
               </RadioGroup>
           </FormControl>
           
-          <TegsField newtodo = {newtodo} setNewtodo = {setNewtodo} scrollToBottom ={scrollToBottom} />
+          <TegsField newtodo = {initTodo} setNewtodo = {setInitTodo} scrollToBottom ={scrollToBottom} />
       </form>
      <Divider/>
         
         <Button  color="primary" onClick={()=>{
-          console.log('new',initTodo)
+
                                                   if(initTodo.name ==null){
                                                     alert('Введите пожалуйта задачу')
                                                     
                                                   }
                                                   else{
-                                                    addTodo(initTodo);
                                                   setTimeout(()=>{
+                                                     addTodo()
                                                      setIsSideOpen(false);
                                                   },2000)
                                                   setProgressStyle({
@@ -149,7 +144,11 @@ function SideForm({classes,importance, addTodo,setIsSideOpen,initTodo,setOpenSna
                                                                                      
                                                }} 
                                                   >Сохранить</Button>
-        <Button  color="secondary" onClick={()=>{setIsSideOpen(false)}}>Отмена</Button>
+        <Button  color="secondary" onClick={()=>{setIsSideOpen(false) 
+                                                if(initTodo.id !== null){
+                                                  addTodo()
+                                                }}
+                                                    }>Отмена</Button>
         <CircularProgress style= {progressStyle} />
 
 </Fragment>

@@ -1,6 +1,6 @@
 import React from 'react'
 import TableCell from '@material-ui/core/TableCell';
-import { Fab } from '@material-ui/core';
+import { Fab, IconButton } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
 import {MyContext} from '../../Provider'
 import DelIcon from '@material-ui/icons/Delete';
@@ -15,24 +15,32 @@ const styles = createStyles({
   },
   notHidden:{
     display:'inherit'
-  }
+  },
+  rowStyle:{
+    display: 'inline'
+  },
+  cell:{
+    minWidth:40,
+    padding: 0,
+    }
+
 });
 function TodoOptions({todosId,classes,style,rowStyle}) {
   return (
     <MyContext.Consumer >
         {({deleteTodo,editTodo})=>(
             <React.Fragment >
-              <TableCell  style = {{minWidth:40}} >
-                <Fab  size="small" style = {rowStyle} aria-label="Edit" onClick={()=>editTodo(todosId)} >
+              <TableCell align='left' className ={classes.cell} >
+                <IconButton  align='center' size="small" style = {rowStyle} aria-label="Edit" onClick={()=>editTodo(todosId)} >
                   <EditIcon/>
-                </Fab>
-              </TableCell>
+                </IconButton>
 
-              <TableCell align="center" style = {{minWidth: 40}}>
-                <Fab  size="small" style = {rowStyle} color = 'secondary' aria-label="Del" onClick={()=>deleteTodo(todosId)}>
+              </TableCell>
+              <TableCell align='right' className ={classes.cell} >
+              <IconButton  size="small" style = {rowStyle} aria-label="Del" onClick={()=>deleteTodo(todosId)}>
                   <DelIcon/>
-                </Fab>
-              </TableCell> 
+                </IconButton>
+              </TableCell>
            </React.Fragment>
         )}
     </MyContext.Consumer>

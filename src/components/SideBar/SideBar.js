@@ -4,13 +4,7 @@ import SideForm from './SideForm'
 import { withStyles } from '@material-ui/core/styles';
 import {MyContext} from '../../Provider'
 const styles = theme => ({
-  header: {
-   position: 'relative',
-   textAlign: 'center',
-   padding:'20px',
-   marginLeft: 'auto',
-   marginRight: 'auto',
-  },
+
   grow:{
     display: 'flex',
     minWidth: 400
@@ -18,28 +12,25 @@ const styles = theme => ({
 });
 
 
-function SideBar({classes}) {
+
+function SideBar() {
   
   return (
      <MyContext.Consumer>
-     {({importance,addTodo,isSideOpen,setIsSideOpen,initTodo,setInitTodo, setOpenSnack})=>(
+     {({importance,addTodo,isSideOpen,setIsSideOpen,initTodo,setInitTodo, setOpenSnack, deleteTodo})=>(
           <Drawer anchor="right" style = {{minWidth : '50%'}}
                   open={isSideOpen}
                   onClose={()=>{
-                    {/* console.log(initTodo) */}
-                    if(initTodo.name == null)
-                    {
-                      {/* setOpenSnack(false) */}
+                  if(initTodo.name == null)                  
                       setIsSideOpen(false)
-                    }
-                    else{
-                      setOpenSnack(true)
-                    }
-                    setInitTodo({})
+                      else
+                         setOpenSnack(true)
+                    
+                    setInitTodo({date: new Date().toISOString().substring(0,10)})
                   }}>
                    <AppBar position="static">
                     <Toolbar>
-                      <Typography variant="h6" color="inherit" className={classes.grow}>
+                      <Typography variant="h6" color="inherit" style  = {{   display: 'flex',minWidth: 320}}>
                         Добавить
                       </Typography>
                     </Toolbar>
@@ -47,7 +38,8 @@ function SideBar({classes}) {
 
                   <Divider/>
       
-                  <SideForm  setInitTodo ={setInitTodo}  importance={importance} addTodo ={addTodo} setIsSideOpen={setIsSideOpen}  initTodo= {initTodo} />
+                  <SideForm  setInitTodo ={setInitTodo}  importance={importance} addTodo ={addTodo}  deleteTodo = {deleteTodo}
+                  setIsSideOpen={setIsSideOpen}  initTodo= {initTodo} />
                 
                   </Drawer>
          
@@ -56,4 +48,4 @@ function SideBar({classes}) {
   )
 }
 
-export default withStyles(styles)(SideBar)
+export default SideBar

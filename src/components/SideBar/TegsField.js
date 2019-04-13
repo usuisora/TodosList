@@ -222,7 +222,7 @@ class IntegrationReactSelect extends React.Component {
               components={components}
               value={this.state.multi}
               onChange={this.handleChange('multi')}
-              placeholder="Выберите теги"
+              placeholder="Теги..."
               isMulti
             />
          </div>

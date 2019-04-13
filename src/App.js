@@ -8,10 +8,10 @@ import Alert from './components/Alert'
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#444'
+      main: '#496'
     },
     secondary: {
-      main: '#b71010',
+      main: '#d44',
     },
     spacing:{
       unit: '3px'
