@@ -189,13 +189,16 @@ class IntegrationReactSelect extends React.Component {
       multi: value
     });
     console.log('clicked',value)
-    const {setNewtodo,newtodo} = this.props;
+    const {setNewtodo,newtodo,scrollToBottom} = this.props;
     const {multi} = this.state;
     const multiInStr = (multi === null) ? value[0].value : value.reduce((sum,next)=>{
        return [...sum,next.value.toString()]
     },[])
          .join(' #');
     setNewtodo({...newtodo,tegs:'#'+multiInStr})
+   
+   scrollToBottom()
+    
   };
 
   render() {
@@ -214,13 +217,7 @@ class IntegrationReactSelect extends React.Component {
           <div className={classes.root}>
             <Select
               classes={classes.placeholder}
-              styles={selectStyles}
-              textFieldProps={{
-                label: 'Теги',
-                InputLabelProps: {
-                  shrink: true,
-                },
-              }}
+              styles={selectStyles}          
               options={suggestions}
               components={components}
               value={this.state.multi}

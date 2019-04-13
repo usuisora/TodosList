@@ -38,7 +38,10 @@ function SideForm({classes,importance, addTodo,setIsSideOpen,initTodo,setOpenSna
       display: "none"
     });
     
-
+    const scrollToBottom =()=>{
+      var f = document.getElementById('rootform');
+      f.scrollTop = f.scrollHeight;
+    }
 
     const handleChange=({target:{value,name}})=>{
       if(name === 'todo'){
@@ -56,7 +59,7 @@ function SideForm({classes,importance, addTodo,setIsSideOpen,initTodo,setOpenSna
   
   return (
     <Fragment>
-    <form  className = {classes.root}>
+    <form  className = {classes.root} id = 'rootform'>
 
           <TextField  
             name="todo"
@@ -123,7 +126,7 @@ function SideForm({classes,importance, addTodo,setIsSideOpen,initTodo,setOpenSna
               </RadioGroup>
           </FormControl>
           
-          <TegsField newtodo = {newtodo} setNewtodo = {setNewtodo}/>
+          <TegsField newtodo = {newtodo} setNewtodo = {setNewtodo} scrollToBottom ={scrollToBottom} />
       </form>
      <Divider/>
         

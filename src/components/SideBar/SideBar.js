@@ -10,6 +10,10 @@ const styles = theme => ({
    padding:'20px',
    marginLeft: 'auto',
    marginRight: 'auto',
+  },
+  grow:{
+    display: 'flex',
+    minWidth: 400
   }
 });
 
@@ -19,7 +23,7 @@ function SideBar({classes}) {
   return (
      <MyContext.Consumer>
      {({importance,addTodo,isSideOpen,setIsSideOpen,initTodo,setInitTodo, setOpenSnack})=>(
-          <Drawer anchor="right"
+          <Drawer anchor="right" style = {{minWidth : '50%'}}
                   open={isSideOpen}
                   onClose={()=>{
                     {/* console.log(initTodo) */}
@@ -33,11 +37,6 @@ function SideBar({classes}) {
                     }
                     setInitTodo({})
                   }}>
-
-                  {/* <Typography align = 'center' variant="h6" color="" className={classes.grow}>
-                     Добавить задачу
-                   </Typography> */}
-
                    <AppBar position="static">
                     <Toolbar>
                       <Typography variant="h6" color="inherit" className={classes.grow}>
@@ -47,8 +46,8 @@ function SideBar({classes}) {
                  </AppBar>
 
                   <Divider/>
-                
-                  <SideForm setInitTodo ={setInitTodo}  importance={importance} addTodo ={addTodo} setIsSideOpen={setIsSideOpen}  initTodo= {initTodo} />
+      
+                  <SideForm  setInitTodo ={setInitTodo}  importance={importance} addTodo ={addTodo} setIsSideOpen={setIsSideOpen}  initTodo= {initTodo} />
                 
                   </Drawer>
          
