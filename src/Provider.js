@@ -1,11 +1,9 @@
 import React,{createContext,useState} from 'react'
-
- export const MyContext =createContext();
+export const MyContext =createContext();
  export function MyProvider (props){
 
     const [isSideOpen, setIsSideOpen] = useState(false);
-
-   
+  
     const [msg, setMsg] = useState('Нажмите ОТМЕНА, чтобы выйти  без сохранения');
     
     const [importance] = useState([
@@ -56,7 +54,6 @@ import React,{createContext,useState} from 'react'
     }
     const editTodo = (id) =>{
         var editTodo = todos.find(todo=>(todo.id===id))
-        // console.log(editTodo)
         setInitTodo({
             id: id,
             name:editTodo.name,
@@ -67,8 +64,6 @@ import React,{createContext,useState} from 'react'
         })
         deleteTodo(id)
         setIsSideOpen(true)
-     
-        // setTodos(newTodos)
     }
 
     return(
