@@ -7,9 +7,9 @@ function TodosHeaders() {
    
   return (
     <TableHead >
-              <TableRow style = {{backgroundColor : '#eee'}}>
+              <TableRow style = {{backgroundColor : '#eee'  }}>
                {headers.map((header,index)=>(
-                <TableCell align="center" key = {index}  >{header.toUpperCase()}</TableCell>   
+                <TableCell align="center" key = {index}  style = {{height: 45}}>{header.toUpperCase()}</TableCell>   
                ))}
               </TableRow>
             </TableHead>

@@ -24,7 +24,7 @@ const theme = createMuiTheme({
    function App(props){
   // const [isSideOpen, setIsSideOpen] = useState(true);
   const table = (arr) => {
-    return (arr.length === 0 ) ? (<Typography  variant="h5" align = 'center' style = {{padding: 40, color: '#444'}}>
+    return (arr.length === 0 ) ? (<Typography  variant="h5" align = 'center' style = {{padding: 50, color: '#666'}}>
               Нет задач
             </Typography>) : <TodosTable/> 
   }
