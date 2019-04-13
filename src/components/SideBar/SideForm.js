@@ -1,7 +1,7 @@
 import React,{useState, Fragment} from 'react'
 import TextField from '@material-ui/core/TextField';
 import { withStyles,createStyles} from '@material-ui/core/styles';
-import { Divider , FormControl, FormLabel, RadioGroup,FormControlLabel,Radio, Button,InputAdornment} from '@material-ui/core';
+import { Divider , FormControl, RadioGroup,FormControlLabel,Radio, Button,InputAdornment} from '@material-ui/core';
 import TegsField from './TegsField'
 import DoneIcon from '@material-ui/icons/Done';
 import DescIcon from '@material-ui/icons/Description';
@@ -31,7 +31,6 @@ const styles = theme =>createStyles({
 
 
 function SideForm({classes,importance, addTodo,setIsSideOpen,initTodo,setMsg,setOpenSnack,setInitTodo,deleteTodo}) {
-    const initDate = new Date().toISOString().substring(0,10)
     
     // const [newtodo, setNewtodo] = useState(initTodo);
     const [progressStyle, setProgressStyle] = useState({
@@ -128,7 +127,6 @@ function SideForm({classes,importance, addTodo,setIsSideOpen,initTodo,setMsg,set
         <Button  color="primary" onClick={()=>{
 
                                                   if(initTodo.name ==null){
-                                                    {/* alert('Введите пожалуйта задачу') */}
                                                     setMsg('Введите пожалуйта задачу')
                                                     setOpenSnack(true);
                                                     

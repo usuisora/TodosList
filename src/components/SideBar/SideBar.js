@@ -1,16 +1,7 @@
 import React from 'react'
 import {Typography, Drawer,AppBar,Toolbar, Divider} from '@material-ui/core'
 import SideForm from './SideForm'
-import { withStyles } from '@material-ui/core/styles';
 import {MyContext} from '../../Provider'
-const styles = theme => ({
-
-  grow:{
-    display: 'flex',
-    minWidth: 400
-  }
-});
-
 
 
 function SideBar() {
