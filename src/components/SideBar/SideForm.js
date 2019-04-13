@@ -36,7 +36,9 @@ function SideForm({classes,importance, addTodo,setIsSideOpen,initTodo,setMsg,set
     const [progressStyle, setProgressStyle] = useState({
       display: "none"
     });
-    
+  
+   const [buttonStyle, setButtonStyle] = useState({});
+   
     const scrollToBottom =()=>{
       var f = document.getElementById('rootform');
       f.scrollTop = f.scrollHeight;
@@ -124,7 +126,7 @@ function SideForm({classes,importance, addTodo,setIsSideOpen,initTodo,setMsg,set
       </form>
      <Divider/>
         
-        <Button  color="primary" onClick={()=>{
+        <Button  style = {buttonStyle} color="primary" onClick={()=>{
 
                                                   if(initTodo.name ==null){
                                                     setMsg('Введите пожалуйта задачу')
@@ -142,14 +144,19 @@ function SideForm({classes,importance, addTodo,setIsSideOpen,initTodo,setMsg,set
                                                      setIsSideOpen(false);
                                                   },2000)
                                                   setProgressStyle({
+                                                    padding: 20,
                                                     marginLeft: 'auto' ,
-                                                    marginRight: 'auto' 
+                                                    marginRight: 'auto' ,
+                                                    zIndex  : 2
                                                   })     
+                                                  setButtonStyle({
+                                                    display: "none"
+                                                  })
                                                   }
                                                                                      
                                                }} 
                                                   >Сохранить</Button>
-        <Button  color="secondary" onClick={()=>{
+        <Button style = {buttonStyle} color="secondary" onClick={()=>{
          
                      setIsSideOpen(false) 
                      if(initTodo.id !== undefined){
