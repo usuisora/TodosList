@@ -1,21 +1,26 @@
 import React from 'react'
 import { withStyles } from '@material-ui/core/styles';
-import {AppBar,Toolbar ,Fab,Typography} from '@material-ui/core'
+import {AppBar,Toolbar ,IconButton,Typography} from '@material-ui/core'
 import {MyContext} from '../../Provider'
 import AddIcon from '@material-ui/icons/Add';
 
-const styles = {
+const styles = theme =>({
     root: {
-      flexGrow: 1,
+      flexGrow: 1
+    },
+    title: {
+      // display: 'none',
+      // [theme.breakpoints.up('sm')]: {
+        display: 'block'
     },
     grow: {
       flexGrow: 1,
     },
     menuButton: {
       marginLeft: -12,
-      marginRight: 20,
-    },
-  };
+      marginRight: 20
+    }
+  })
 function Bar({classes}) {
     // const { classes } = props;
   return (
@@ -24,18 +29,18 @@ function Bar({classes}) {
       <div className={classes.root}>
           <AppBar position="static">
             <Toolbar>
-              <Typography variant="h6" color="inherit" className={classes.grow}>
-                Список задач
-              </Typography>
-            <Fab color="inherit" onClick={()=>setIsSideOpen(true)}>
-                <AddIcon/>
-            </Fab>
+               <Typography  variant="h6" color="inherit"   className={classes.title}>
+                  Список задач
+                </Typography>
+                <div className={classes.grow}/>
+                <IconButton color="inherit" onClick={()=>setIsSideOpen(true)}>
+                    <AddIcon />
+              </IconButton>
             </Toolbar>
           </AppBar>
         </div>}
-</MyContext.Consumer>
-   
-  )
+  </MyContext.Consumer> )
 }
+
 
 export default withStyles(styles)(Bar)

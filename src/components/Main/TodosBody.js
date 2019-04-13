@@ -22,7 +22,7 @@ function TodosBody() {
    <MyContext.Consumer>
         {({todos})=>(        
             <TableBody>
-                {console.log(todos)}
+                {/* {console.log(todos)} */}
               {todos.map(todo => (
                 <Fragment key={todo.id}>
                    <Row todo={todo}/>

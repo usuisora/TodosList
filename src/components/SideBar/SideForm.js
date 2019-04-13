@@ -30,7 +30,7 @@ const styles = theme =>createStyles({
 })
 
 
-function SideForm({classes,importance, addTodo,setIsSideOpen,initTodo,setOpenSnack}) {
+function SideForm({classes,importance, addTodo,setIsSideOpen,initTodo,setOpenSnack,setInitTodo}) {
     const initDate = new Date().toISOString().substring(0,10)
     
     const [newtodo, setNewtodo] = useState(initTodo);
@@ -42,13 +42,18 @@ function SideForm({classes,importance, addTodo,setIsSideOpen,initTodo,setOpenSna
 
     const handleChange=({target:{value,name}})=>{
       if(name === 'todo'){
-         setNewtodo({...newtodo,name:value})
+        //  setNewtodo({...newtodo,name:value})
+         setInitTodo({...newtodo,name:value})
+        //  setInitTodo({name:value})
+
       }
       else{
-        setNewtodo({...newtodo,[name]:value})
+        // setNewtodo({...newtodo,[name]:value});
+        setInitTodo({...initTodo,[name]:value})
 
       }
     }
+  
   return (
     <Fragment>
     <form  className = {classes.root}>
@@ -58,7 +63,7 @@ function SideForm({classes,importance, addTodo,setIsSideOpen,initTodo,setOpenSna
             multiline
             rowsMax="1"
             label="Заголовок задачи"
-            value={newtodo.name}
+            value={initTodo.name}
             onChange={handleChange}
             InputProps={{
                 startAdornment: (
@@ -123,13 +128,13 @@ function SideForm({classes,importance, addTodo,setIsSideOpen,initTodo,setOpenSna
      <Divider/>
         
         <Button  color="primary" onClick={()=>{
-          console.log('new',newtodo)
-                                                  if(newtodo.name ==null){
+          console.log('new',initTodo)
+                                                  if(initTodo.name ==null){
                                                     alert('Введите пожалуйта задачу')
                                                     
                                                   }
                                                   else{
-                                                    addTodo(newtodo);
+                                                    addTodo(initTodo);
                                                   setTimeout(()=>{
                                                      setIsSideOpen(false);
                                                   },2000)
@@ -141,7 +146,7 @@ function SideForm({classes,importance, addTodo,setIsSideOpen,initTodo,setOpenSna
                                                                                      
                                                }} 
                                                   >Сохранить</Button>
-        <Button  color="secondary" onClick={()=>{setIsSideOpen(false);setOpenSnack(false)}}>Отмена</Button>
+        <Button  color="secondary" onClick={()=>{setIsSideOpen(false)}}>Отмена</Button>
         <CircularProgress style= {progressStyle} />
 
 </Fragment>

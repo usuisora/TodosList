@@ -33,7 +33,7 @@ import React,{createContext,useState} from 'react'
     const addTodo = (arr) =>{
         const newId =  (todos.length!==0) ? todos[todos.length-1].id+1 : 1
         var newtodo = {id: newId,isCompleted: false}
-        console.log(Object.entries(arr))
+        // console.log(Object.entries(arr))
         Object.entries(arr).forEach(row=>{
             newtodo[row[0]] = row[1] 
         })
@@ -55,7 +55,7 @@ import React,{createContext,useState} from 'react'
     }
     const editTodo = (id) =>{
         var editTodo = todos.find(todo=>(todo.id===id))
-        console.log(editTodo)
+        // console.log(editTodo)
         setInitTodo({
             id: id,
             name:editTodo.name,
@@ -79,6 +79,7 @@ import React,{createContext,useState} from 'react'
                                         setIsSideOpen,
                                         editTodo,
                                         initTodo,
+                                        setInitTodo,
                                         setTodoStatus,
                                         openSnack,
                                         setOpenSnack}}>

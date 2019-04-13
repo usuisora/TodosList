@@ -1,9 +1,8 @@
-import React,{useState} from 'react'
+import React from 'react'
 import {Typography, Drawer,AppBar,Toolbar, Divider} from '@material-ui/core'
 import SideForm from './SideForm'
 import { withStyles } from '@material-ui/core/styles';
 import {MyContext} from '../../Provider'
-import Alert from '../Alert'
 const styles = theme => ({
   header: {
    position: 'relative',
@@ -16,15 +15,23 @@ const styles = theme => ({
 
 
 function SideBar({classes}) {
-  // const [openSnack, setOpenSnack] = useState(false);
   
   return (
      <MyContext.Consumer>
-     {({importance,addTodo,isSideOpen,setIsSideOpen,initTodo,openSnack, setOpenSnack})=>(
+     {({importance,addTodo,isSideOpen,setIsSideOpen,initTodo,setInitTodo, setOpenSnack})=>(
           <Drawer anchor="right"
                   open={isSideOpen}
                   onClose={()=>{
-                     setOpenSnack(true)
+                    {/* console.log(initTodo) */}
+                    if(initTodo.name == null)
+                    {
+                      {/* setOpenSnack(false) */}
+                      setIsSideOpen(false)
+                    }
+                    else{
+                      setOpenSnack(true)
+                    }
+                    setInitTodo({})
                   }}>
 
                   {/* <Typography align = 'center' variant="h6" color="" className={classes.grow}>
@@ -41,7 +48,7 @@ function SideBar({classes}) {
 
                   <Divider/>
                 
-                  <SideForm openSnack = {openSnack} setOpenSnack={setOpenSnack} importance={importance} addTodo ={addTodo} setIsSideOpen={setIsSideOpen}  initTodo= {initTodo} />
+                  <SideForm setInitTodo ={setInitTodo}  importance={importance} addTodo ={addTodo} setIsSideOpen={setIsSideOpen}  initTodo= {initTodo} />
                 
                   </Drawer>
          
