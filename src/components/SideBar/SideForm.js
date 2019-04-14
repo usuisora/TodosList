@@ -94,6 +94,8 @@ function SideForm({classes,importance, addTodo,setIsSideOpen,initTodo,setMsg,set
             label="Дата"
             type="date"
             placeholder = 'Дата...'
+            value={initTodo.date}
+
             onChange={handleChange}
             InputProps={{
                 startAdornment: (

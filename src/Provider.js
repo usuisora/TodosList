@@ -58,7 +58,7 @@ export const MyContext =createContext();
             id: id,
             name:editTodo.name,
             description:editTodo.description,
-            date:initDate,
+            date:editTodo.date,
             importance:editTodo.importance,
             tegs: editTodo.tegs
         })
