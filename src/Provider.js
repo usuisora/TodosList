@@ -13,9 +13,9 @@ export const MyContext =createContext();
         {id:'4',name:'Не срочная неважная'}]);
     
     const [todos, setTodos] = useState([
-        // {id:1,isCompleted: 'Потом', name:'Встретится с Другом', description:'В 2 часа на проспекте.',date:new Date(2019,3,23).toISOString().substring(0,10),importance:importance[0].name,tegs:'#meeting'},
-        // {id:2,isCompleted: 'Потом', name:'Почитать книгу', description:'Алхимик Пауло Коэльо',date:new Date(2019,3,24).toISOString().substring(0,10),importance:importance[3].name,tegs:'#reading'},
-        // {id:3,isCompleted: 'Потом', name:'Забрать справку', description:'Мед. осмотр в поликлинике. Кабинет 12',date:new Date(2019,3,25).toISOString().substring(0,10),importance:importance[0].name,tegs:'#trip'}
+        {id:1,isCompleted: 'Потом', name:'Встретится с Другом', description:'В 2 часа на проспекте.',date:new Date(2019,3,23).toISOString().substring(0,10),importance:importance[0].name,tegs:'#meeting'},
+        {id:2,isCompleted: 'Потом', name:'Почитать книгу', description:'Алхимик Пауло Коэльо',date:new Date(2019,3,24).toISOString().substring(0,10),importance:importance[3].name,tegs:'#reading'},
+        {id:3,isCompleted: 'Потом', name:'Забрать справку', description:'Мед. осмотр в поликлинике. Кабинет 12',date:new Date(2019,3,25).toISOString().substring(0,10),importance:importance[0].name,tegs:'#trip'}
     ]);
     
    
@@ -25,24 +25,37 @@ export const MyContext =createContext();
         return 'deleted'
     }
 
-    const initDate = new Date().toISOString().substring(0,10)
-
     const [initTodo, setInitTodo] = useState({});
     const [openSnack, setOpenSnack] = useState(false);
 
     const addTodo = () =>{
-        var newtodo = {isCompleted:'Потом'}
-        Object.entries(initTodo).forEach(row=>{
-            newtodo[row[0]] = row[1] 
-        })
-        newtodo.id =  (todos.length!==0) ? todos[todos.length-1].id+1 : 1
+            console.log('add entry initTodo',initTodo)
+            var newtodo = {isCompleted:'Потом'}
 
-        const newTodos = [...todos,newtodo]
-        newTodos.sort((a,b)=>(a.id-b.id))
-        setTodos(newTodos)
-        setInitTodo({date: new Date().toISOString().substring(0,10)})
-       
+
+            var del = new Promise( function(resolve,reject){
+                var newTodos = todos.filter(todo=>(todo.id!=initTodo.id))
+                setTodos(newTodos)
+                console.log('todosin del',newTodos)
+
+                resolve(newTodos);
+            })
+            del.then((res)=>{
+                console.log('todos',res)
+                Object.entries(initTodo).forEach(row=>{
+                    if(row[0] !=='id')
+                        newtodo[row[0]] = row[1] 
+                    })
+                    newtodo.id = (todos.length!==0) ? todos[todos.length-1].id+1 : 1
+                    console.log('inside',newtodo)
+                    var newTodos = [...res,newtodo]
+                    console.log('newTodossss', newTodos)
+                    setTodos(newTodos)
+                    setInitTodo({date: new Date().toISOString().substring(0,10)})
+                })
     }
+
+    
 
     const setTodoStatus = (id,status)=>{
         var editTodo = todos.find(todo=>(todo.id===id))
@@ -62,7 +75,7 @@ export const MyContext =createContext();
             importance:editTodo.importance,
             tegs: editTodo.tegs
         })
-        deleteTodo(id)
+        // deleteTodo(id)
         setIsSideOpen(true)
     }
 

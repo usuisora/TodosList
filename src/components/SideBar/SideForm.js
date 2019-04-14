@@ -30,9 +30,8 @@ const styles = theme =>createStyles({
 })
 
 
-function SideForm({classes,importance, addTodo,setIsSideOpen,initTodo,setMsg,setOpenSnack,setInitTodo,deleteTodo}) {
+function SideForm({classes,importance, addTodo,setIsSideOpen,initTodo,setMsg,setOpenSnack,setInitTodo}) {
     
-    // const [newtodo, setNewtodo] = useState(initTodo);
     const [progressStyle, setProgressStyle] = useState({
       display: "none"
     });
@@ -137,12 +136,7 @@ function SideForm({classes,importance, addTodo,setIsSideOpen,initTodo,setMsg,set
                                                   }
                                                   else{
                                                   setTimeout(()=>{
-                                                    if(initTodo.id !== undefined){
-                                                        console.log(initTodo.id)
-                                                        deleteTodo(initTodo.id)
-                                                      }
                                                      addTodo()
-
                                                      setIsSideOpen(false);
                                                   },2000)
                                                   setProgressStyle({
@@ -155,19 +149,12 @@ function SideForm({classes,importance, addTodo,setIsSideOpen,initTodo,setMsg,set
                                                     display: "none"
                                                   })
                                                   }
-                                                                                     
                                                }} 
                                                   >Сохранить</Button>
         <Button style = {buttonStyle} color="secondary" onClick={()=>{
-         
-                     setIsSideOpen(false) 
-                     if(initTodo.id !== undefined){
-                       addTodo()
-                     }
-                      setInitTodo({})
-                             
-                
-                                                    }}>Отмена</Button>
+                                                            setIsSideOpen(false) 
+                                                                setInitTodo({})   
+                                                          }}>Отмена</Button>
         <CircularProgress style= {progressStyle} />
 
 </Fragment>
